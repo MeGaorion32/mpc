@@ -1,0 +1,4 @@
+db.sqlite
+media/**
+**/__pycache__/**
+**/migrations/**

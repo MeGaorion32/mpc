@@ -1,0 +1,84 @@
+.project-img {
+    width: 15%;
+    height: 15%;
+}
+
+.thumbnail {
+    width: 150px; /* Задайте ширину миниатюры */
+    cursor: pointer;
+    margin: 10px;
+}
+
+.file-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.create-project-block {
+    width: 30%;
+}
+
+.create-page {
+    display: flex;
+    justify-content: center;
+}
+
+.detail-img-block {
+    display: flex; 
+    align-items: center;
+}
+
+.detail-project-img {
+    max-width: 100px; 
+    margin-right: 10px;
+}
+
+.modal-pdf {
+    width: 90%; 
+    height: 90%;
+    border: none;
+    margin: auto; /* Центрируем */
+}
+
+.detail-project-pdf {
+    max-width: 50px;
+}
+
+.detail-pdf-block {
+    cursor: pointer;
+}
+
+ /* Стиль для модального окна */
+ .modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Зафиксировано в одном месте */
+    z-index: 1000; /* На переднем плане */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включает прокрутку, если необходимо */
+    background-color: rgb(0,0,0, 0.8); /* Черный фон */
+    transition: opacity 0.3s;
+}
+
+/* Стиль для изображения в модальном окне */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%; /* Размер изображения */
+    height: auto;
+}
+
+/* Стиль для кнопки закрытия */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,22 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block styles %}{% endblock %}
+
+{% block title %}Все проекты{% endblock title %}
+
+{% block content %}
+
+<h1>Проекты</h1>
+<a href="{% url 'project_create' %}">Создать новый проект</a>
+<ul>
+    {% for project in projects %}
+        <li>
+            <a href="{% url 'project_detail' project.id %}">{{ project.name }}</a>
+            <a href="{% url 'project_update' project.id %}">Изменить проект</a>
+        </li>
+        
+    {% endfor %}
+</ul>
+
+{% endblock content %}
