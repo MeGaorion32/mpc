@@ -1,4 +1,4 @@
-{% extends 'projects/base.html' %}
+{% extends 'projects/admin/base.html' %}
 {% load static %}
 
 {% block styles %}{% endblock %}
@@ -12,7 +12,7 @@
         {{ form.as_p }}
         <button type="submit">Сохранить изменения</button>
     </form>
-    <a href="{% url 'all_projects' %}">Все проекты</a>
+    <a href="{% url 'admin_all_projects' %}">Все проекты</a>
 
     {% if form.errors %}
     <ul>

@@ -1,4 +1,4 @@
-{% extends 'projects/base.html' %}
+{% extends 'projects/admin/base.html' %}
 {% load static %}
 
 {% block styles %}{% endblock %}
@@ -12,7 +12,7 @@
 <ul>
     {% for project in projects %}
         <li>
-            <a href="{% url 'project_detail' project.id %}">{{ project.name }}</a>
+            <a href="{% url 'admin_project_detail' project.id %}">{{ project.name }}</a>
             <a href="{% url 'project_update' project.id %}">Изменить проект</a>
         </li>
         

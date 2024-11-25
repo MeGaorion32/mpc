@@ -1,4 +1,4 @@
-{% extends 'projects/base.html' %}
+{% extends 'projects/user/base.html' %}
 {% load static %}
 {% load project_filters %}
 
@@ -35,7 +35,7 @@
 {% else %}
 <p>Неизвестный формат файла. Не удалось отобразить.</p>
 {% endif %}
-<a href="{% url 'all_projects' %}">Назад к страницу все проекты</a>
+<a href="{% url 'user_all_projects' %}">Назад к страницу все проекты</a>
 
 <script src="{% static 'projects/scripts/script.js' %}"></script>
 

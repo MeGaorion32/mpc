@@ -12,10 +12,10 @@ def create_project(request):
             print('project1', project)
             project.save()
             print('project2', project)
-            return redirect("project_detail", id=project.id)
+            return redirect("admin_project_detail", id=project.id)
     else:
         form = ProjectForm()
-    return render(request, "projects/create.html", {"form": form})
+    return render(request, "projects/admin/create.html", {"form": form})
 
 def update_project(request, id):
     project = get_object_or_404(Project, id=id)
@@ -27,20 +27,31 @@ def update_project(request, id):
             print('project1', project)
             project.save()
             print('project2', project)
-            return redirect("project_detail", id=project.id)
+            return redirect("admin_project_detail", id=project.id)
     else:
         form = ProjectForm(instance=project)
     
-    return render(request, "projects/update.html", {"form": form, "project": project})
+    return render(request, "projects/admin/update.html", {"form": form, "project": project})
 
 
-def all_projects(request):
+def admin_all_projects(request):
     projects = Project.objects.order_by("-created_at")
     context = {"projects": projects}
-    return render(request, "projects/list.html", context)
+    return render(request, "projects/admin/list.html", context)
 
-def project_detail(request, id):
+def admin_project_detail(request, id):
     project = get_object_or_404(Project, id=id)
     is_image = project.file.name.endswith(('.jpg', '.jpeg', '.png'))
     is_pdf = project.file.name.endswith('.pdf')
-    return render(request, "projects/detail.html", {"project": project, 'is_image': is_image, 'is_pdf': is_pdf,})
+    return render(request, "projects/admin/detail.html", {"project": project, 'is_image': is_image, 'is_pdf': is_pdf,})
+
+def user_all_projects(request):
+    projects = Project.objects.order_by("-created_at")
+    context = {"projects": projects}
+    return render(request, "projects/user/list.html", context)
+
+def user_project_detail(request, id):
+    project = get_object_or_404(Project, id=id)
+    is_image = project.file.name.endswith(('.jpg', '.jpeg', '.png'))
+    is_pdf = project.file.name.endswith('.pdf')
+    return render(request, "projects/user/detail.html", {"project": project, 'is_image': is_image, 'is_pdf': is_pdf,})
