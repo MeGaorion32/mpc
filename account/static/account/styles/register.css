@@ -1,0 +1,50 @@
+.field-rows, .main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-rows {
+    margin-bottom: 1em;
+}
+
+.register-main-title {
+    text-align: center;
+}
+
+.form-block {
+    width: 70%;
+}
+
+.info-block {
+    width: 30%;
+}
+
+.register-avatar {
+    display: none;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar-preview-block {
+    border: 1px gray solid;
+    width: 50%;
+    height: 15em;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-preview-image {
+    width: 90%;
+}
+
+.register-field {
+    width: 20em !important;
+}

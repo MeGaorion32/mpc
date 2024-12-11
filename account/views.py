@@ -4,10 +4,10 @@ from .forms import UserRegistrationForm, UserLoginForm
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+        form = UserRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Замените на ваше название URL входа
+            return redirect('register')  # Замените на ваше название URL входа
     else:
         form = UserRegistrationForm()
     return render(request, 'account/register.html', {'form': form})

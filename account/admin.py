@@ -6,12 +6,12 @@ class CustomUserAdmin(UserAdmin):
 
     model = Account
     list_display = ( 'id', 'email', 'name', 'surname', 'patronymic', 'password', 'avatar', 
-                    'is_active', 'is_superuser', 'token', 'created_at', 'updated_at')
+                    'is_active', 'is_superuser', 'role', 'token', 'created_at', 'updated_at')
     list_filter = ('is_active', 'is_staff',)
     ordering = ('email',)
     fieldsets = (
 
-        (None, {'fields': ('email', 'name', 'surname', 'patronymic', 'avatar', 'is_active', 'is_superuser', 'token')}),
+        (None, {'fields': ('email', 'name', 'surname', 'patronymic', 'avatar', 'is_active', 'role', 'is_superuser', 'token')}),
     )
     search_fields = ('email',) 
 

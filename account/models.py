@@ -45,7 +45,7 @@ class Account(Base, AbstractBaseUser, PermissionsMixin):
     surname = models.CharField(max_length=255, blank=True, null=True, verbose_name='Фамилия')
     patronymic = models.CharField(max_length=255, blank=True, null=True, verbose_name='Отчество')
     phone = models.CharField(max_length=15, blank=True, null=True, verbose_name='Номер телефона')
-    avatar = models.FileField(upload_to=get_upload_path, blank=True, null=True, verbose_name='Аватар')  
+    avatar = models.FileField(upload_to='account/', blank=True, null=True, verbose_name='Аватар')  
 
      # Поле для роли
     role = models.CharField(max_length=10, choices=Role.choices, default=Role.DIRECTOR, verbose_name='Роль')

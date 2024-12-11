@@ -3,30 +3,45 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Account
 
 class UserRegistrationForm(UserCreationForm):
+
+    def __init__(self, *args, **kwargs):
+        super(UserRegistrationForm, self).__init__(*args, **kwargs)
+        # Добавим опцию "Выбрать роль" в начало списка
+        self.fields['role'].choices = [('', 'Выбрать роль')] + list(self.fields['role'].choices)
+
+         # Установим значение по умолчанию для поля role
+        self.fields['role'].initial = ''
    
     password1 = forms.CharField(
         label='Пароль пользователя', 
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control custom-name-class', 
-            'placeholder': 'Введите пароль'
+            'class': 'form-control register-field', 
+            'placeholder': 'Пароль'
         })
 
     )
     password2 = forms.CharField(
         label='Пароль пользователя', 
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control custom-name-class', 
-            'placeholder': 'Подтвердите пароль'
+            'class': 'form-control register-field', 
+            'placeholder': 'Подтверждение пароля'
         })
 
     )
     class Meta:
         model = Account
-        fields = ('email', 'phone', 'role', 'password1', 'password2')
+        fields = ('email', 'phone', 'role', 'password1', 'password2', 'name', 'surname', 'patronymic', 'avatar')
 
         widgets = {
-                'email': forms.TextInput(attrs={'class': 'form-control custom-name-class', 'placeholder': 'Введите email'}),
-                'phone': forms.TextInput(attrs={'class': 'form-control custom-name-class', 'placeholder': 'Введите телефон'}),                              
+                'email': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Введите email'}),
+                'phone': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Введите телефон'}), 
+                'name': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Имя'}), 
+                'avatar': forms.FileInput(attrs={'class': 'register-avatar register-field', 'id': 'register-avatar',}), 
+                'role': forms.Select(attrs={'class': 'form-select register-field', 'placeholder': 'Выбрать роль'}), 
+                'surname': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Фамилия'}), 
+                'patronymic': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Отчество'}),  
+                # 'password1': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Пароль'}), 
+                # 'password2': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Подтверждение пароля'}),                             
             }
 
         labels = {            
