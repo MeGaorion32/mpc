@@ -1,0 +1,62 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+{% endblock %}
+
+{% block title %}Создание проекта{% endblock title %}
+
+{% block content %}
+
+<!-- {{ form }} -->
+<main class="login-page">
+    <div class="login-block">
+        <p class="login-block-head">Портал мониторинга хода строительства</p>
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="login-form-inputs">
+                <!-- <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label> -->
+                {{ form.email }}
+                <!-- {{ form.email.errors }} -->
+            </div>
+            <div class="login-form-inputs">
+                <!-- <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label> -->
+                {{ form.password }}
+                <!-- {{ form.password.errors }} -->
+            </div>
+            <!-- {{ form.as_p }} -->
+            <div class="login-form-footer">
+                <div class="login-remember">
+                    <input class="form-check-input" type="checkbox">
+                    <p class="p-not-margin">Запомнить меня</p>
+                </div>
+                
+                <a href="#">Забыли пароль?</a>
+            </div>            
+            <button class="login-button" type="submit">Войти</button>
+        </form>        
+    </div>
+
+</main>
+
+
+<!-- {% if form.errors %}
+    <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %} -->
+
+{% endblock content %}
+
+
+
+

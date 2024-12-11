@@ -1,15 +1,99 @@
-{% extends 'projects/admin/base.html' %}
+{% extends 'layouts/admin_base.html' %}
 {% load static %}
 
-{% block styles %}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'projects/styles/allProjects.css' %}">
+{% endblock %}
 
 {% block title %}Все проекты{% endblock title %}
 
 {% block content %}
 
-<h1>Проекты</h1>
-<a href="{% url 'project_create' %}">Создать новый проект</a>
-<ul>
+<h1>Страница администратора. Все проекты</h1>
+<!-- <a href="{% url 'project_create' %}">Создать новый проект</a> -->
+
+<section class="all-projects-page-block">
+    <section class="projects-block">
+        <h2>Реализуемые проекты</h2>      
+      
+        {% for project in projects %}
+
+        <a href="{% url 'user_project_detail' project.id %}" class="project-block">
+            <div class="project-name-block">
+                <p class="project-name">{{ project.name }}</p>
+            </div>
+            <div class="project-image-block">
+                {% if project.file %}
+                    <img src="{{ project.full_file_path }}" alt="" class="project-image">
+                {% else %}
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                {% endif %}
+            </div>            
+        </a>     
+
+        {% endfor %}
+
+        <!-- <div class="project-block">
+            <div class="project-name-block">
+                <p class="project-name">Project</p>
+            </div>
+            <div class="project-image-block">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+        </div>
+
+        <div class="project-block">
+            <div class="project-name-block">
+                <p class="project-name">Project</p>
+            </div>
+            <div class="project-image-block">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+        </div> -->
+
+    </section>
+    <section class="projects-block">
+        <h2>Завершенные проекты</h2>
+        {% for project in completed_projects %}
+
+        <a href="{% url 'user_project_detail' project.id %}" class="project-block">
+            <div class="project-name-block">
+                <p class="project-name">{{ project.name }}</p>
+            </div>
+            <div class="project-image-block">
+                {% if project.file %}
+                    <img src="{{ project.full_file_path }}" alt="" class="project-image">
+                {% else %}
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                {% endif %}
+            </div>            
+        </a>     
+
+        {% endfor %}
+        
+        <!-- <div class="project-block">
+            <div class="project-name-block">
+                <p class="project-name">Project</p>
+            </div>
+            <div class="project-image-block">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+        </div>
+
+        <div class="project-block">
+            <div class="project-name-block">
+                <p class="project-name">Project</p>
+            </div>
+            <div class="project-image-block">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+        </div> -->
+
+    </section>
+
+</section>
+
+<!-- <ul>
     {% for project in projects %}
         <li>
             <a href="{% url 'admin_project_detail' project.id %}">{{ project.name }}</a>
@@ -17,6 +101,6 @@
         </li>
         
     {% endfor %}
-</ul>
+</ul> -->
 
 {% endblock content %}

@@ -1,0 +1,21 @@
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2em;
+}
+
+.detail-images-block {
+    margin-top: 3em;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.detail-project-img {
+    width: 70%;
+}

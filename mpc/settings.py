@@ -42,12 +42,20 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap4',
+    'fontawesomefree',
 
     'projects',
-    'pages'
+    'pages',
+    'account'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+
+AUTH_USER_MODEL = 'account.Account'
+
+LOGIN_URL = 'login'  # Замените на имя вашего URL для логина
+# LOGIN_REDIRECT_URL = 'home'  # URL, на который перенаправляется пользователь после успешного входа
+LOGOUT_REDIRECT_URL = 'login'  # URL, на который перенаправляется пользователь после выхода
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +73,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        # 'DIRS': [os.path.join(BASE_DIR, 'projects/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,8 +1,10 @@
-{% extends 'projects/user/base.html' %}
+{% extends 'layouts/project_base.html' %}
 {% load static %}
 {% load project_filters %}
 
-{% block styles %}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'projects/styles/detailPageStyles.css' %}">
+{% endblock %}
 
 {% block title %}{{ project.name }}{% endblock title %}
 
@@ -14,19 +16,32 @@
     <iframe id="modalPdf" class="modal-pdf" frameborder="0"></iframe>
 </div>
 
-<h1>{{ project.name }}</h1>    
-{% if is_image %}
+<section class="detail-content">
+    <h1 class="detail-project-name">{{ project.name }}</h1> 
+    <div class="detail-images-block">
+        {% if project.file %}
+        <img id="projectImage" class="detail-project-img" src="{{ project.full_file_path }}" alt="Файл проекта">
+        {% else %}
+        <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
+        {% endif %}    
+        
+    </div>
+    
+</section>
+
+   
+<!-- {% if is_image %} -->
 <!-- Отображаем изображение в маленьком размере с названием файла -->
-<div class="detail-img-block">
+<!-- <div class="detail-img-block">
     <img id="projectImage" class="detail-project-img" src="{{ project.full_file_path }}" alt="Файл проекта" onclick="openFile('img', '{{ project.full_file_path }}')">
-    <span>{{ project.full_file_path|basename }}</span> <!-- Отображаем название файла -->
-</div>
+    <span>{{ project.full_file_path|basename }}</span> 
+</div> -->
 
 
-{% elif is_pdf %}
+<!-- {% elif is_pdf %} -->
 <!-- <iframe src="{% static 'projects/ViewerJS/index.html' %}#{{ project.full_file_path }}" style="width:70%; height:600px;" frameborder="0"></iframe> -->
    <!-- Иконка PDF с возможностью открытия в ViewerJS -->
-<div class="detail-pdf-block">
+<!-- <div class="detail-pdf-block">
     <img id="projectPdf" class="detail-project-pdf" src="{% static 'projects/images/pdf.png' %}" alt="PDF файл" onclick="openFile('pdf', `{% static 'projects/ViewerJS/index.html' %}#{{ project.full_file_path }}`)" />
     <span>{{ project.full_file_path|basename }}</span>
 </div>
@@ -34,8 +49,7 @@
 <p>Если PDF не отображается, скачайте его <a href="{{ project.full_file_path }}">здесь</a>.</p>
 {% else %}
 <p>Неизвестный формат файла. Не удалось отобразить.</p>
-{% endif %}
-<a href="{% url 'user_all_projects' %}">Назад к страницу все проекты</a>
+{% endif %} -->
 
 <script src="{% static 'projects/scripts/script.js' %}"></script>
 

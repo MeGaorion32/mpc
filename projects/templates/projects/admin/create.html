@@ -1,27 +1,89 @@
-{% extends 'projects/admin/base.html' %}
+{% extends 'layouts/admin_base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+<!-- {% load crispy_forms_tags %} -->
 
 {% block styles %}
 <!-- <link rel="stylesheet" href="{% static 'projects/styles/style.css' %}"> -->
 {% endblock %}
 
+{% block headScripts %}
+    
+{% endblock headScripts %}
+
 {% block title %}Создание проекта{% endblock title %}
 
 {% block content %}
 <main class="create-page">
+    {% if updatePage %}
+    <h1>Изменение проекта</h1>
+    {% else %}
+    <h1>Добавление нового проекта</h1>
+    {% endif %}
     <div class="create-project-block">
-        <h1>Создать проект</h1>
-        <form method="post" enctype="multipart/form-data">
+        
+        <form id="project-create-form" class="project-create-form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- {{ form.as_p }} -->
-            {% crispy form %}
-            <button class="btn btn-success" type="submit">Сохранить</button>
+            <div class="main-data-block">
+                <div class="project-create-name-block">
+                    <label for="project-name-input">Называние</label>
+                    <input type="text" id="project-name-input" class="project-name-input" name="name" {% if updatePage %}value="{{ project.name }}"{% endif %}>
+                </div>
+    
+                <div class="project-owner-block">
+                    <label for="project-user-select">Руководитель</label>
+                    <select name="user" id="project-user-select" class="project-user-select">
+                        {% for user in users %}
+                        <option value="{{ user.id }}" {% if updatePage and project.user.id == user.id %}selected{% endif %}>{{ user }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                {% if updatePage %}
+                <div class="project-create-completed-block">
+                    <label for="project-complete-input">Завершен</label>
+                    <input type="checkbox" id="project-complete-input form-check-input" class="project-complete-input" name="completed" {% if project.completed %}checked{% endif %}>
+                </div>
+                {% endif %}
+
+                
+
+            </div>
+
+            <div class="info-data-block">
+                <label for="project-info-text">Описание проекта</label>
+                <textarea name="info" id="project-info-text" class="project-info-text">{% if updatePage %}{{ project.info }}{% endif %}</textarea>  
+              
+                     
+            </div>     
+            
         </form>
-        <a href="{% url 'all_projects' %}">Все проекты</a>
+
+        <div class="all-files-block">
+            <div class="files-block" id="files-block"></div>            
+            <div class="selected-file-block" id="upload-block">
+                <div id="selected-file" class="selected-file"></div>
+                <button class="btn btn-danger remove-file-button" id="remove-file-button">Удалить файл</button>
+            </div>
+        </div>
+
+        {% if updatePage %}
+            <button id="save-button" class="btn btn-warning" data-token="{{ csrf_token }}">Изменить</button>
+        {% else %}
+            <button id="save-button" class="btn btn-success" data-token="{{ csrf_token }}">Сохранить</button>
+        {% endif %}
     </div>
 
 </main>
+
+<div>
+    <!-- <h1>Загрузите файлы</h1>
+    {% csrf_token %} -->
+    <!-- <button id="upload-button">Выбрать файлы</button>
+    <input type="file" id="file-input" multiple style="display: none;" />
+    <ul id="file-list"></ul>
+    <button id="save-button" data-token="{{ csrf_token }}">Сохранить файлы</button> -->
+    
+</div>
 
 
 
@@ -37,5 +99,48 @@
         {% endfor %}
     </ul>
 {% endif %}
+<div class="project-data" id="project-data" data="{{projectFiles}}"></div>
+<div class="update-page" id="update-page" data="{{updatePage}}"></div>
+<div class="projectId" id="projectId" data="{{project.id}}"></div>
+
+
 
 {% endblock content %}
+
+{% block footerScripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- <script type="application/json" id="project-files">
+        {{ projectFiles|json_script:"project-files" }}            
+    </script> -->
+
+    <script type="application/json" id="csrf-token">
+        {{ csrf_token }}
+    </script>   
+    
+    <script>   
+        const csrfToken = document.getElementById('csrf-token').textContent;
+        let projectFiles = $("#project-data").attr("data");     
+        let updatePage = $("#update-page").attr("data");
+        let projectId = $("#projectId").attr("data");
+        if(updatePage && updatePage == 'True') {
+            updatePage = true;
+        } else {
+            updatePage = false;
+        }
+        // const projectId = JSON.parse(document.getElementById('project-id').textContent);
+        // let projectFiles = document.getElementById('project-files').textContent;
+
+        console.log('projectFiles', projectFiles);
+        console.log('projectId', projectId);
+        console.log('updatePage', updatePage);
+        console.log('updatePage type', typeof updatePage);
+        projectFiles = JSON.parse(projectFiles);
+        console.log('projectFiles JSON', projectFiles);
+
+
+
+    </script>
+    <script src="{% static 'projects/scripts/adminData.js' %}"></script>
+    <script src="{% static 'projects/scripts/adminScripts.js' %}"></script>
+{% endblock footerScripts %}

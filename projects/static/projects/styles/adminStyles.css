@@ -1,0 +1,113 @@
+#file-list {
+    list-style: none;
+}
+
+.all-files-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.files-block {
+    width: 50%;    
+}
+
+.files-list-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px gray solid;
+    height: 7em;
+    width: 100%;
+    margin-bottom: 1em;
+    margin-right: 3em;
+}
+
+
+.selected-file-block {    
+    height: 30em;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-file {
+    border: 1px gray solid;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-file-button {
+    margin-top: 1em;    
+}
+
+
+.files-list-image {
+    width: 5em;
+}
+
+.file-input-button {
+    width: 17em;
+}
+
+.project-create-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1em;    
+}
+
+.main-data-block  {
+    width: 50%;
+}
+
+.info-data-block {
+    width: 40%;
+}
+
+.info-data-block, .main-data-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.info-data-block {
+    align-items: center;
+}
+
+.main-data-block {
+    align-items: flex-start;    
+}
+
+.project-create-name-block, .project-owner-block, .project-create-completed-block {
+    display: flex;    
+    justify-content: space-between;    
+    margin-bottom: 1em;
+    width: 50%;
+}
+
+.project-create-name-block, .project-create-completed-block {
+    align-items: center;
+}
+
+.project-owner-block {
+    height: 7em;
+    align-items: flex-start;
+}
+
+.project-info-text {
+    width: 100%;
+    margin-top: 1em;
+    height: 7em;
+}
+
+.selected-image {
+    width: 90%;
+    height: 90%;
+}

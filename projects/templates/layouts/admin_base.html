@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+    {% block styles %}{% endblock %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'projects/styles/adminStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'projects/styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'account/styles/style.css' %}">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    {% block headScripts %}{% endblock headScripts %}
+</head>
+<body>
+   
+    {% if user.is_superuser %}   
+
+    <header class="auth-header">
+        <div class="logo">
+            <img class="logo-img" src="{% static 'images/logo.png' %}" alt="">
+        </div>
+        <div class="account">
+            <!-- <img class="account-img" src="{% static 'images/user_avatar.png' %}" alt=""> -->            
+            <span class="material-icons">
+                person_outline
+            </span>
+            <span>{{ user }}</span>
+            <span class="material-icons" id="toggle-dropdown" style="cursor: pointer;">
+                expand_more
+            </span>
+        </div>
+
+        <div id="logout-button-block" class="logout-button-block" style="display: none;">
+            <p class="login-head">Портал мониторинга хода строительства</p>
+            <p class="login-head">{{ user }}</p>
+            <form method="post" action="{% url 'logout' %}" class="logout-form">    
+                {% csrf_token %}    
+                <button class="logout-button" type="submit">Выйти</button>    
+            </form>    
+        </div>        
+    </header>
+
+    <main class="base-main">        
+        <section class="base-menu">
+            <nav class="base-menu-items">
+                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Все проекты</a>
+                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Все пользователи</a>
+                <a class="base-menu-item" href="{% url 'project_create_page' %}">Добавить проект</a>                    
+                <a class="base-menu-item" href="{% url 'register' %}">Регистрировать пользователя</a>
+                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Профиль</a>
+            </nav>
+        </section>
+        <section class="base-content">
+            {% block content %}{% endblock content %}
+        </section>
+    </main>
+    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'projects/scripts/baseScript.js' %}"></script>
+
+    {% else %}
+    <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
+    
+    {{ user }}    
+    <a href="{% url 'user_all_projects' %}">Все проекты</a>
+    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit">Выйти</button>
+    </form>     
+    {% endif %}
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    {% block footerScripts %}{% endblock footerScripts %}
+
+</body>
+</html>

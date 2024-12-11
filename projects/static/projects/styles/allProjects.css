@@ -1,0 +1,56 @@
+.all-projects-page-block {
+    display: flex;
+    justify-content: space-around; 
+    padding: 3em;   
+}
+
+.projects-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    padding: 2em;
+}
+
+.project-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25em;
+    height: 10em;
+    border-radius: 2em;
+    background: #d9d9d9;
+    margin-top: 3em;
+    text-decoration: none;
+}
+
+
+.project-name-block, .project-image-block {
+    width: 50%;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-name-block {
+    background: #007777;
+    height: 100%;
+    margin: 0;
+    border-radius: 2em 0 0 2em;
+}
+
+.project-image-block {
+    height: 100%;
+    border-radius: 0 2em 2em 0;
+}
+
+.project-image {
+    height: 7em;
+    width: 7em;
+}
+
+.project-name {
+    color: #fff;
+}
+

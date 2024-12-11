@@ -1,0 +1,148 @@
+html, body {
+    height: 100%; /* Устанавливает высоту на 100% */
+    margin: 0; /* Убирает отступы */
+}
+
+body {
+    display: flex;
+    flex-direction: column; 
+}
+
+.auth-main {
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: #F4F4F4;
+}
+
+.p-not-margin {
+    margin: 0;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+}
+
+.login-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 29em;
+    height: 24em;
+    border-radius: 2em;
+    background: #fff;
+    padding: 1em;
+}
+
+.login-block-head {
+    width: 70%;
+    height: 2.25em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.login-form-inputs {
+    width: 100%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+    width: 90%;
+    height: 60%;
+}
+
+.logo-img {
+    width: 12em;
+    height: 4em;
+}
+
+.account-img {
+    width: 3em;
+    height: 3em;
+}
+
+.account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-remember, .login-form-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.login-remember {
+    width: 40%;
+}
+
+.form-check-input {
+    margin: 0;
+}
+
+.login-button, .logout-button {
+    width: 100%;
+    background: #007777;
+    border-color: #007777;
+    padding: 0.5em;
+    color: #fff;
+    margin-top: 1em;
+}
+
+.auth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 3em;
+}
+
+.login-head {
+    text-align: center;
+}
+
+.logout-button-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20em;
+    height: 15em;
+    border-radius: 2em;
+    background: #fff;
+    padding: 1em;
+    position: fixed; 
+    top: 7em; 
+    right: 1em; 
+    cursor: pointer; 
+    z-index: 1000; 
+}
+
+.logout-form {
+    width: 100%;
+}
+
+.first-head-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 17%;
+}
+
+.head-link {
+    text-decoration: none;
+}
+
+
+
+
+
+
