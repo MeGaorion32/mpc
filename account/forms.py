@@ -5,32 +5,44 @@ from .models import Account
 class UserRegistrationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
+        user_instance = kwargs.get('instance')
         super(UserRegistrationForm, self).__init__(*args, **kwargs)
         # Добавим опцию "Выбрать роль" в начало списка
         self.fields['role'].choices = [('', 'Выбрать роль')] + list(self.fields['role'].choices)
 
          # Установим значение по умолчанию для поля role
         self.fields['role'].initial = ''
+
+        # Если редактируем пользователя, сделаем поля пароля необязательными
+        if user_instance:
+            # self.fields['password'].required = False
+            self.fields['password1'].required = False
+            self.fields['password2'].required = False
+
    
     password1 = forms.CharField(
-        label='Пароль пользователя', 
+        label='Пароль пользователя 1', 
         widget=forms.PasswordInput(attrs={
             'class': 'form-control register-field', 
-            'placeholder': 'Пароль'
-        })
+            'placeholder': 'Пароль',
+        }),
+        required=False
+
 
     )
     password2 = forms.CharField(
-        label='Пароль пользователя', 
+        label='Пароль пользователя 2', 
         widget=forms.PasswordInput(attrs={
             'class': 'form-control register-field', 
-            'placeholder': 'Подтверждение пароля'
-        })
+            'placeholder': 'Подтверждение пароля',
+        }),
+        required=False 
+    )    
 
-    )
     class Meta:
         model = Account
-        fields = ('email', 'phone', 'role', 'password1', 'password2', 'name', 'surname', 'patronymic', 'avatar')
+        fields = ('email', 'phone', 'role', 'name', 'surname', 'patronymic', 'avatar', 'password1', 'password2')
+        # fields = '__all__'
 
         widgets = {
                 'email': forms.TextInput(attrs={'class': 'form-control register-field', 'placeholder': 'Введите email'}),
@@ -49,6 +61,22 @@ class UserRegistrationForm(UserCreationForm):
             'phone': 'Телефон пользователя',           
 
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get('password1')
+        password2 = cleaned_data.get('password2')
+
+        # Если это редактирование и пароли не были введены
+        if not password1 and not password2 and self.instance:
+            return cleaned_data        
+
+        # Валидация пароля (если он введен)
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Пароли не совпадают.")
+
+        return cleaned_data
+
 
 
 

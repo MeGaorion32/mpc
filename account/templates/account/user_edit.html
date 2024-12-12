@@ -21,51 +21,43 @@
 {% if user.is_superuser %}  
 <main class="register-page">
     <div class="login-project-block">
-        <div class="row">
-            {% if update_user %}
-            <h2 class="register-main-title">Изменение пользователя {{ project_user.name }} {{ project_user.surname }} {{ project_user.patronymic }}</h2>
-            {% else %}
-            <h2 class="register-main-title">Добавление нового пользователя</h2>
-            {% endif %}
+        <div class="row">            
+            <h2 class="register-main-title">Изменение пользователя 
+                {{ project_user.name }} {{ project_user.surname }} {{ project_user.patronymic }}</h2>            
         </div>
 
-        <!-- <h2>User {{ project_user.id }}</h2> -->
+        <h2>User {{ project_user.role }}</h2>
 
         <section class="main-section">
             <div class="form-block">
-                <form method="post" enctype="multipart/form-data">
+                <form id="user-edit-form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     <div class="field-rows">
-                        {{ form.name }}
-                        {{ form.surname }}
-                        {{ form.patronymic }}
+                        <input type="text" name="name" class="form-control register-field" value="{{ project_user.name }}" placeholder="Имя">
+                        <input type="text" name="surname" class="form-control register-field" value="{{ project_user.surname }}" placeholder="Фамилия">
+                        <input type="text" name="patronymic" class="form-control register-field" value="{{ project_user.patronymic }}" placeholder="Отчество">
                     </div>
 
                     <div class="field-rows">
-                        {{ form.email }}
-                        {{ form.avatar }}
+                        <input type="text" name="email" class="form-control register-field" value="{{ project_user.email }}" placeholder="Email">
+                        <input type="file" name="avatar" class="register-avatar" id="register-avatar">                        
                         <button class="btn btn-success avatar-button register-field" id="avatar-button">Фото пользователя</button>
-                        {{ form.role }}
+                        <select name="role" id="user-role" class="form-select register-field">
+                            {% for role in user_roles %}
+                            <option value="{{ role.name }}" {% if role.name == project_user.role %}selected{% endif %}>{{ role.label }}</option>
+                            {% endfor %}                            
+                        </select>                        
                     </div>
 
                     <div class="field-rows">
-                       
-                        {{ form.password1 }}
-                        {{ form.password2 }}
+                        <input type="password" name="password" class="form-control register-field" placeholder="Пароль">                        
 
                     </div>
-
-                    {% if update_user %}                    
-                    <button class="btn btn-warning" type="submit">Изменить пользователя</button>
-                    {% else %}
-                    <button class="btn btn-success" type="submit">Создать пользователя</button>
-                    {% endif %}
-
-                  
-
-
+                    
                 </form>
+                <button id="change-user" class="btn btn-warning" type="submit"
+                data-id="{{ project_user.id }}" data-token="{{ csrf_token }}">Изменить пользователя</button>
     
             </div>
 
@@ -76,14 +68,11 @@
                     {% endif %}
                 </div>
                 <button class="btn btn-danger" id="delete-user-avatar" data-update="{{ update_user }}"
-                {% if update_user %}data-id="{{ project_user.id }}" data-token="{{ csrf_token }}"{% endif %}>Удалить фото</button>
+                data-id="{{ project_user.id }}" data-token="{{ csrf_token }}">Удалить фото</button>
 
             </div>
 
         </section>
-
-       
-        
         
     </div>
 

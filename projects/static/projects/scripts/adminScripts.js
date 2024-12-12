@@ -29,7 +29,7 @@ $(document).ready(function() {
    
 
     $('#save-button').on('click', function() {
-        var csrfToken = $(this).data('token');
+        let csrfToken = $(this).data('token');
         const form = document.getElementById('project-create-form');
         const formData = new FormData(form);    
         console.log('csrfToken', csrfToken);

@@ -1,0 +1,22 @@
+p {
+    margin: 0 !important;
+}
+
+.users-main-title {
+    text-align: center;
+}
+
+.user-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    border: 1px gray solid;
+    padding: 1em;
+    width: 70%;
+}
+
+.user-update-link {
+    text-decoration: none;
+    color: #000;
+}

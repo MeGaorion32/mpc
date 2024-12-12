@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db import models
 from projects.models import Base
 
+from django.conf import settings
+
 class CustomUserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
@@ -19,6 +21,7 @@ class CustomUserManager(BaseUserManager):
     def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('role', 'admin')
         return self.create_user(email, password, **extra_fields)
     
 
@@ -59,6 +62,9 @@ class Account(Base, AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []  # Другие обязательные поля, если требуется
 
     objects = CustomUserManager()  # Подключите ваш кастомный менеджер
+
+    def full_avatar_path(self):
+        return settings.BASE_URL + self.avatar.url   
 
    
     def __str__(self):

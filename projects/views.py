@@ -76,7 +76,7 @@ def update_project(request, id):
     return render(request, "projects/admin/update.html", {"form": form, "project": project})
 
 
-def admin_all_projects(request):
+def admin_all_projects_page(request):
     projects = Project.objects.filter(completed=False).order_by("-created_at")
     completed_projects = Project.objects.filter(completed=True).order_by("-created_at")
     context = {
@@ -84,6 +84,14 @@ def admin_all_projects(request):
         "completed_projects": completed_projects,
         }
     return render(request, "projects/admin/list.html", context)
+
+
+def admin_all_users_page(request):
+    users = Account.objects.all().order_by("-created_at")
+    context = {
+        "users": users,
+        }
+    return render(request, "account/all_users.html", context)
 
 def admin_project_detail(request, id):
     project = get_object_or_404(Project, id=id)
