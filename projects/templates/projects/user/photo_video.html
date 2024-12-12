@@ -1,0 +1,42 @@
+{% extends 'layouts/project_base.html' %}
+{% load static %}
+{% load project_filters %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'projects/styles/photoVideo.css' %}">
+{% endblock %}
+
+{% block title %}{{ project.name }}{% endblock title %}
+
+{% block content %}
+<section class="photo-video-section">
+    <div class="photo-video-block">
+        <h2 class="photo-video-title">Фотографии проекта {{ project.name }}</h2>
+        <div class="all-photo-video">
+            {% for photo in project_photos %}
+            <img class="photo-video-img" src="{{ photo.full_file_path }}" alt="Фото проекта">
+            {% endfor %}
+        </div>
+        
+    </div>
+
+    <div class="photo-video-block">
+        <h2 class="photo-video-title">Все видео проекта {{ project.name }}</h2>
+        <div class="all-photo-video">
+            {% for video in project_videos %}
+             <!-- <video class="photo-video-img" controls>
+                <source src="{{ video.full_file_path }}" type="video/mp4">
+            </video> -->
+            <img class="photo-video-img" src="{{ video.full_file_path }}" alt="Фото проекта">
+            {% endfor %}
+        </div>       
+       
+    </div>
+
+</section>
+
+{% endblock content %}
+
+{% block footerScripts %}
+<script src="{% static 'projects/scripts/script.js' %}"></script>
+{% endblock footerScripts %}

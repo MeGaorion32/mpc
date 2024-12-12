@@ -19,12 +19,26 @@
 <section class="detail-content">
     <h1 class="detail-project-name">{{ project.name }}</h1> 
     <div class="detail-images-block">
-        {% if project.file %}
+        <!-- {% if project.file %}
         <img id="projectImage" class="detail-project-img" src="{{ project.full_file_path }}" alt="Файл проекта">
         {% else %}
         <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
-        {% endif %}    
+        {% endif %}     -->
+        {% if project_photos|length > 0 %}
+        {% for photo in project_photos|slice:":3" %}
+        <img id="projectImage" class="detail-project-img" src="{{ photo.full_file_path }}" alt="Файл проекта">
+        {% endfor %}
+        {% else %}
+        <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
+        {% endif %}  
         
+    </div>
+
+    <div class="project-info">
+        <h2>Описание проекта</h2>
+        <div class="project-info-text">
+        <p>{{ project.info }}</p>
+        </div>
     </div>
     
 </section>
@@ -51,6 +65,10 @@
 <p>Неизвестный формат файла. Не удалось отобразить.</p>
 {% endif %} -->
 
-<script src="{% static 'projects/scripts/script.js' %}"></script>
+
 
 {% endblock content %}
+
+{% block footerScripts %}
+<script src="{% static 'projects/scripts/script.js' %}"></script>
+{% endblock footerScripts %}

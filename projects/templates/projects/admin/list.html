@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<h1>Страница администратора. Все проекты</h1>
+<!-- <h1>Страница администратора. Все проекты</h1> -->
 <!-- <a href="{% url 'project_create' %}">Создать новый проект</a> -->
 
 <section class="all-projects-page-block">
@@ -32,62 +32,31 @@
         </a>     
 
         {% endfor %}
-
-        <!-- <div class="project-block">
-            <div class="project-name-block">
-                <p class="project-name">Project</p>
-            </div>
-            <div class="project-image-block">
-                <img src="{% static 'images/logo.png' %}" alt="">
-            </div>
-        </div>
-
-        <div class="project-block">
-            <div class="project-name-block">
-                <p class="project-name">Project</p>
-            </div>
-            <div class="project-image-block">
-                <img src="{% static 'images/logo.png' %}" alt="">
-            </div>
-        </div> -->
+      
 
     </section>
-    <section class="projects-block">
+    <section class="all-projects-block">
         <h2>Завершенные проекты</h2>
-        {% for project in completed_projects %}
+        <div class="projects-block">
+            {% for project in completed_projects %}
 
-        <a href="{% url 'user_project_detail' project.id %}" class="project-block">
-            <div class="project-name-block">
-                <p class="project-name">{{ project.name }}</p>
-            </div>
-            <div class="project-image-block">
-                {% if project.file %}
-                    <img src="{{ project.full_file_path }}" alt="" class="project-image">
-                {% else %}
-                    <img src="{% static 'images/logo.png' %}" alt="">
-                {% endif %}
-            </div>            
-        </a>     
+            <a href="{% url 'user_project_detail_page' project.id %}" class="project-block">
+                <div class="project-name-block">
+                    <p class="project-name">{{ project.name }}</p>
+                </div>
+                <div class="project-image-block">
+                    {% if project.file %}
+                        <img src="{{ project.full_file_path }}" alt="" class="project-image">
+                    {% else %}
+                        <img src="{% static 'images/logo.png' %}" alt="">
+                    {% endif %}
+                </div>            
+            </a>     
+    
+            {% endfor %}
+    
 
-        {% endfor %}
-        
-        <!-- <div class="project-block">
-            <div class="project-name-block">
-                <p class="project-name">Project</p>
-            </div>
-            <div class="project-image-block">
-                <img src="{% static 'images/logo.png' %}" alt="">
-            </div>
-        </div>
-
-        <div class="project-block">
-            <div class="project-name-block">
-                <p class="project-name">Project</p>
-            </div>
-            <div class="project-image-block">
-                <img src="{% static 'images/logo.png' %}" alt="">
-            </div>
-        </div> -->
+        </div>   
 
     </section>
 

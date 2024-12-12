@@ -4,13 +4,22 @@
     padding: 3em;   
 }
 
+.all-projects-block {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 40%;
+    /* padding: 2em; */
+}
+
 .projects-block {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 40%;
-    padding: 2em;
+    /* width: 40%;
+    padding: 2em; */
 }
 
 .project-block {

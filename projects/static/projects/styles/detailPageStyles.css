@@ -18,4 +18,18 @@
 
 .detail-project-img {
     width: 70%;
+    margin-bottom: 1em;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    width: 70%;
+}
+
+.project-info-text {
+    border: 1px solid gray;
+    width: 70%;
 }

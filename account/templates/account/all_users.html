@@ -1,5 +1,6 @@
 {% extends 'layouts/admin_base.html' %}
 {% load static %}
+{% csrf_token %}
 {% load crispy_forms_tags %}
 
 {% block styles %}
@@ -16,7 +17,7 @@
         <h2 class="users-main-title">Все пользователи</h2>
     </div>
     {% for user in users %}
-    <a class="user-update-link" href="{% url 'update_user' user.id %}">
+    <a class="user-update-link" href="{% url 'update_user' 'user' user.id %}">
         <div class="user-block" id="user-block">
             <div class="user-email-block">
                 <p class="user-email">{{ user.email }}</p>
@@ -25,13 +26,19 @@
                 <p class="user-name">{{ user.name }} {{ user.surname }} {{ user.patronymic }}</p>
             </div>            
             <div class="user-role-block">
-                <p class="user-role">{{ user.role }}</p>
+                {% for role in roles %}
+                <p class="user-role">{% if user.role == role.name %}{{ role.label }}{% endif %}</p>
+                {% endfor %}
             </div>
     
             <div class="user-actions-block">
-                <form method="post" action="">
+                
+                  
+                <form method="post" action="{% url 'delete_user' user.id %}">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Удалить</button>
+                    <button type="submit" id="delete_user" class="btn btn-danger" 
+                data-id="{{ user.id }}" data-token="{{ csrf_token }}">Удалить</button>        
+                             
                 </form>
             </div>
             

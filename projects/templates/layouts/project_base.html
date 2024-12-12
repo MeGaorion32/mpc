@@ -22,10 +22,21 @@
     <header class="auth-header">
         <div class="first-head-block">
             <div class="head-logo-block">
-                <a href="{% url 'user_all_projects' %}" class="head-link"><img class="logo-img" src="{% static 'images/logo.png' %}" alt=""></a>
+                {% if user.is_superuser %}
+                <a href="{% url 'admin_all_projects_page' %}" class="head-link"><img class="logo-img" src="{% static 'images/logo.png' %}" alt=""></a>
+                {% else %}
+                <a href="{% url 'user_all_projects_page' %}" class="head-link"><img class="logo-img" src="{% static 'images/logo.png' %}" alt=""></a>
+                {% endif %}
+
             </div>
             <div class="head-menu-block">
-                <a href="{% url 'user_all_projects' %}" class="btn btn-primary head-menu-button head-link">Главная</a>
+                {% if user.is_superuser %}
+                <a href="{% url 'admin_all_projects_page' %}" class="btn btn-primary head-menu-button head-link">Главная</a>
+                {% else %}
+                <a href="{% url 'user_all_projects_page' %}" class="btn btn-primary head-menu-button head-link">Главная</a>
+                {% endif %}
+
+
             </div>
 
         </div>
@@ -54,16 +65,16 @@
     <main class="base-main">        
         <section class="base-menu">
             <nav class="base-menu-items">
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Графики</a>
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Сводки</a>
-                <a class="base-menu-item" href="{% url 'project_create' %}">Парк техники</a>                    
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Персонал ВЗис</a>
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Оснащение</a>
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Лаборатории</a>
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">ОТ, ПБ, ООС</a>
-                <a class="base-menu-item" href="{% url 'project_create' %}">предписания</a>                    
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Фото, видео</a>
-                <a class="base-menu-item" href="{% url 'admin_all_projects' %}">Резервная позиция</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'graphics' project.id %}">Графики</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'summaries' project.id %}">Сводки</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'techpark' project.id %}">Парк техники</a>                    
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'personal' project.id %}">Персонал ВЗис</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'equipment' project.id %}">Оснащение</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'laboratories' project.id %}">Лаборатории</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'ot_pb_oos' project.id %}">ОТ, ПБ, ООС</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'regulations' project.id %}">Предписания</a>                    
+                <a class="base-menu-item" href="{% url 'project_photo_video_page' project.id %}">Фото, видео</a>
+                <a class="base-menu-item" href="{% url 'project_other_files_page' 'reserv' project.id %}">Резервная позиция</a>
                 {% if user.is_superuser %} 
                 <a class="base-menu-item change-project-menu-item" href="{% url 'project_update_page' project.id %}">Изменить проект</a>
                 {% endif %}
@@ -84,5 +95,6 @@
     {% endif %}
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    {% block footerScripts %}{% endblock footerScripts %}
 </body>
 </html>

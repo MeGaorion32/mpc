@@ -66,7 +66,13 @@ def login_view(request):
     return render(request, 'account/login.html', {'form': form})
 
 
-def update_user(request, user_id):
+def update_user(request, type, user_id):
+
+    roles = [{'name': '', 'label': 'Выбрать роль'},
+                 {'name': 'admin', 'label': 'Администратор'},
+                 {'name': 'owner', 'label': 'Владелец'},
+                 {'name': 'director', 'label': 'Руководитель проекта'},
+                ]
 
     if request.method == 'POST':
 
@@ -77,7 +83,7 @@ def update_user(request, user_id):
             'patronymic': request.POST.get('patronymic'), 
             'email': request.POST.get('email'),  
             'role': request.POST.get('role'),           
-            'file': request.FILES.get('avatar'),
+            'avatar': request.FILES.get('avatar'),
         }    
         print('data', data)                   
         
@@ -86,28 +92,34 @@ def update_user(request, user_id):
         # Обновляем проект
         for attr, value in data.items():
             setattr(user, attr, value)
+        
+        password_changed = False
 
         if request.POST.get('password'):
             user.set_password(request.POST.get('password'))
-
+            password_changed = True
+       
         # Сохраняем изменения
         user.save()
+
+        # Если пароль изменён, повторно аутентифицируем пользователя
+        if type == 'admin' and password_changed:
+            login(request, user)  # Перезаписываем сессию
       
         return render(request, 'account/user_edit.html', {
-            'project_user': user            
+            'project_user': user,
+            'user_roles': roles,            
+            'edit_type': type           
         }) 
     
     else:
         user = get_object_or_404(Account, id=user_id)
-        roles = [{'name': '', 'label': 'Выбрать роль'},
-                 {'name': 'admin', 'label': 'Администратор'},
-                 {'name': 'owner', 'label': 'Владелец'},
-                 {'name': 'director', 'label': 'Руководитель проекта'},
-                ]
+        print('type', type)        
 
         return render(request, 'account/user_edit.html', {
             'project_user': user,
             'user_roles': roles,            
+            'edit_type': type
         })
 
 
@@ -130,4 +142,20 @@ def delete_user_avatar(request, id):
             })
 
 
+def delete_user(request, id):        
+
+    user = get_object_or_404(Account, id=id)
+    user.delete()
+    
+    users = Account.objects.all().order_by("-created_at")
+    roles = [{'name': '', 'label': 'Выбрать роль'},
+                {'name': 'admin', 'label': 'Администратор'},
+                {'name': 'owner', 'label': 'Владелец'},
+                {'name': 'director', 'label': 'Руководитель проекта'},
+                ]
+    context = {
+        "users": users,
+        "roles": roles,
+        }
+    return render(request, "account/all_users.html", context)
 

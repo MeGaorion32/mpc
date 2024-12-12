@@ -1,0 +1,36 @@
+{% extends 'layouts/project_base.html' %}
+{% load static %}
+{% load project_filters %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'projects/styles/otherPages.css' %}">
+{% endblock %}
+
+{% block title %}{{ project.name }}{% endblock title %}
+
+{% block content %}
+<section class="other-files-section">
+    <div class="other-files-block">
+        <h2 class="other-files-title">{{ type_label }} проекта {{ project.name }}</h2>
+        <div class="all-other-files">
+            {% for file in project_files %}
+            {% with file_name=file.full_file_path|split:"/" %}
+                <iframe src="{% static 'projects/ViewerJS/index.html' %}#{{ file.full_file_path }}" style="width:70%; height:600px;" frameborder="0"></iframe>
+                <p>{{ file_name|last }}</p>  <!-- отображаем имя файла -->
+            {% endwith %}
+            <!-- <p>{{ file.type }}</p> -->
+            {% endfor %}
+        </div>
+        
+    </div>
+  
+       
+    </div>
+
+</section>
+
+{% endblock content %}
+
+{% block footerScripts %}
+<script src="{% static 'projects/scripts/script.js' %}"></script>
+{% endblock footerScripts %}

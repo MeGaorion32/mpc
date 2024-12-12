@@ -3,6 +3,7 @@ from .models import Project, ProjectFile
 from account.models import Account
 from .forms import ProjectForm, MyFileForm
 import json
+import os
 
 
 def create_project_page(request):
@@ -88,8 +89,14 @@ def admin_all_projects_page(request):
 
 def admin_all_users_page(request):
     users = Account.objects.all().order_by("-created_at")
+    roles = [{'name': '', 'label': 'Выбрать роль'},
+                 {'name': 'admin', 'label': 'Администратор'},
+                 {'name': 'owner', 'label': 'Владелец'},
+                 {'name': 'director', 'label': 'Руководитель проекта'},
+                ]
     context = {
         "users": users,
+        "roles": roles,
         }
     return render(request, "account/all_users.html", context)
 
@@ -99,7 +106,7 @@ def admin_project_detail(request, id):
     is_pdf = project.file.name.endswith('.pdf')
     return render(request, "projects/admin/detail.html", {"project": project, 'is_image': is_image, 'is_pdf': is_pdf,})
 
-def user_all_projects(request):
+def user_all_projects_page(request):
     projects = Project.objects.filter(completed=False).order_by("-created_at")
     completed_projects = Project.objects.filter(completed=True).order_by("-created_at")
     context = {
@@ -110,9 +117,45 @@ def user_all_projects(request):
 
 def user_project_detail(request, id):
     project = get_object_or_404(Project, id=id)
+    project_photos = ProjectFile.objects.filter(file_project = project.id, type = 'photo').order_by("created_at")
     is_image = project.file.name.endswith(('.jpg', '.jpeg', '.png'))
     is_pdf = project.file.name.endswith('.pdf')
-    return render(request, "projects/user/detail.html", {"project": project, 'is_image': is_image, 'is_pdf': is_pdf,})
+    return render(request, "projects/user/detail.html", {
+        "project": project, 
+        "project_photos": project_photos, 
+        'is_image': is_image, 
+        'is_pdf': is_pdf,
+        })
+
+
+def project_photo_video_page(request, id):
+    project = get_object_or_404(Project, id=id)
+    project_photos = ProjectFile.objects.filter(file_project = project.id, type = 'photo').order_by("created_at")
+    project_videos = ProjectFile.objects.filter(file_project = project.id, type = 'video').order_by("created_at")
+    
+    return render(request, "projects/user/photo_video.html", {
+        "project": project, 
+        "project_photos": project_photos, 
+        "project_videos": project_videos, 
+        })
+
+
+def other_files_page(request, type, id):
+    print('type', type)
+    project = get_object_or_404(Project, id=id)
+    project_files = ProjectFile.objects.filter(file_project = project.id, type = type).order_by("created_at")
+    type_label = project_files.first().get_type_display()
+    print('type_label', type_label)
+
+    for file in project_files:
+        file.file_name = os.path.basename(file.full_file_path())
+
+    
+    return render(request, "projects/user/other_files.html", {
+        "project": project, 
+        "project_files": project_files, 
+        "type_label": type_label        
+        })
 
 
 

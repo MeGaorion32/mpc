@@ -15,6 +15,7 @@ $(document).ready(function() {
         }        
       
     });
+    
 
     $('#delete-user-avatar').on('click', function() {
         let update = $(this).data('update');
@@ -64,12 +65,13 @@ $(document).ready(function() {
 
         csrfToken = $(this).data('token');
         user_id = $(this).data('id');
+        type = $(this).data('type');
 
         console.log('token', csrfToken);
         console.log('user_id', user_id);
 
         $.ajax({
-            url: '/user/update/' + user_id + '/',  // URL вашего представления
+            url: '/user/update/' + type + '/' + user_id + '/',  // URL вашего представления
             type: 'POST',
             data: formData,
             headers: {
