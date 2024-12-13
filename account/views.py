@@ -56,8 +56,13 @@ def login_view(request):
 
     form = UserLoginForm(request.POST or None)
     if form.is_valid():
+        remember = request.POST.get('remember')
         user = form.get_user()
         login(request, user)
+        if remember:
+                request.session.set_expiry(1209600)  # 2 недели
+        else:
+            request.session.set_expiry(0)  # Устанавливаем сессии экзампентиально
         print('user', user.is_superuser)
         if user.is_superuser:
             return redirect('update_user', type='admin', user_id=user.id)  
