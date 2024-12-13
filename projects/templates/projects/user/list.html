@@ -14,23 +14,26 @@
 <section class="all-projects-page-block">
     <section class="projects-block">
         <h2>Реализуемые проекты</h2>     
-        {% for project in projects %} 
-    
-      
-        <a href="{% url 'user_project_detail' project.id %}" class="project-block">
-            <div class="project-name-block">
-                <p class="project-name">{{ project.name }}</p>
-            </div>
-            <div class="project-image-block">               
-                {% if project.file %}
-                    <img src="{{ project.full_file_path }}" alt="" class="project-image">
-                {% else %}
-                    <img src="{% static 'images/logo.png' %}" alt="">
-                {% endif %}
-            </div>        
-        </a>
+        <div class="projects-block">
+            {% for project in projects %}
 
-        {% endfor %}
+            <a href="{% url 'user_project_detail_page' project.id %}" class="project-block">
+                <div class="project-name-block">
+                    <p class="project-name">{{ project.name }}</p>
+                </div>
+                <div class="project-image-block">
+                    {% if project.file %}
+                        <img src="{{ project.full_file_path }}" alt="" class="project-image">
+                    {% else %}
+                        <img src="{% static 'images/logo.png' %}" alt="">
+                    {% endif %}
+                </div>            
+            </a>     
+    
+            {% endfor %}
+    
+
+        </div>
       
 
     </section>
@@ -39,7 +42,7 @@
         <div class="projects-block">
             {% for project in completed_projects %}
 
-            <a href="{% url 'user_project_detail' project.id %}" class="project-block">
+            <a href="{% url 'user_project_detail_page' project.id %}" class="project-block">
                 <div class="project-name-block">
                     <p class="project-name">{{ project.name }}</p>
                 </div>
@@ -68,7 +71,7 @@
 <!-- <ul>
     {% for project in projects %}
         <li>
-            <a href="{% url 'user_project_detail' project.id %}">{{ project.name }}</a>
+            <a href="{% url 'user_project_detail_page' project.id %}">{{ project.name }}</a>
         </li>
         
     {% endfor %}

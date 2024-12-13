@@ -1,3 +1,53 @@
+$(document).ready(function() {
+//     $('#project_photo_video').on('click', function() {
+//         let csrfToken = $(this).data('token');
+//         let fileId = $(this).data('id');
+//         let type = $(this).data('type');
+//         let url = $(this).data('url');
+        
+//         console.log('csrfToken', csrfToken);
+//         console.log('fileId', fileId);
+//         console.log('type', type);
+//         console.log('url', url);
+
+//         let fileData = {
+//             id: fileId,
+//             type: type,
+//             url: url
+//         }       
+
+//         $.ajax({
+//             url: '/projects/file/detail/',  
+//             type: 'GET',
+//             // data: fileData,
+//             headers: {
+//                 'X-CSRFToken': csrfToken // Передаем CSRF-токен в заголовках
+//             },
+//             processData: false,
+//             contentType: false,
+//             success: function(response) {               
+               
+//                 // location.reload();
+//             },
+
+//             error: function(xhr, status, error) {
+//                 console.error(error);
+//                 alert('Произошла ошибка.');  // Сообщение об ошибке
+//             }
+
+//         });
+
+//     });
+
+})
+
+
+
+
+
+
+
+
 console.log('Test');
 
 // Обработчик клика для открытия изображения в модальном окне

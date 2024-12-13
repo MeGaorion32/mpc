@@ -26,7 +26,18 @@
         {% endif %}     -->
         {% if project_photos|length > 0 %}
         {% for photo in project_photos|slice:":3" %}
-        <img id="projectImage" class="detail-project-img" src="{{ photo.full_file_path }}" alt="Файл проекта">
+        <form action="{% url 'project_detail_file_page' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ photo.id }}">
+            <input type="hidden" name="type" value="photo"> 
+            <input type="hidden" name="url" value="user_project_detail_page"> 
+
+            <button type="submit" style="background: none; border: none; padding: 0;">
+                <img id="projectImage" class="detail-project-img" src="{{ photo.full_file_path }}" alt="Файл проекта">                
+            </button>
+
+        </form>     
+        
         {% endfor %}
         {% else %}
         <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">

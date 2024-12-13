@@ -107,8 +107,14 @@ def admin_project_detail(request, id):
     return render(request, "projects/admin/detail.html", {"project": project, 'is_image': is_image, 'is_pdf': is_pdf,})
 
 def user_all_projects_page(request):
-    projects = Project.objects.filter(completed=False).order_by("-created_at")
-    completed_projects = Project.objects.filter(completed=True).order_by("-created_at")
+    current_user = request.user
+    if current_user.role == 'owner':
+        projects = Project.objects.filter(completed=False).order_by("-created_at")
+        completed_projects = Project.objects.filter(completed=True).order_by("-created_at")
+
+    if current_user.role == 'director':
+        projects = Project.objects.filter(completed=False, user=current_user.id).order_by("-created_at")
+        completed_projects = Project.objects.filter(completed=True, user=current_user.id).order_by("-created_at")
     context = {
         "projects": projects,
         "completed_projects": completed_projects,
@@ -156,6 +162,35 @@ def other_files_page(request, type, id):
         "project_files": project_files, 
         "type_label": type_label        
         })
+
+def photo_video_detail_page(request):
+    if request.method == "POST":
+        id = request.POST.get('id')
+        type = request.POST.get('type')
+        back_url = request.POST.get('url')
+        print('back_url', back_url)
+        print('id', id)
+        print('type', type)
+        project_file = get_object_or_404(ProjectFile, id=id)
+        project = get_object_or_404(Project, id=project_file.file_project.id)
+        project_files = ProjectFile.objects.filter(file_project=project.id, type=type).order_by("created_at")
+        type_label = project_file.get_type_display()
+        print('type_label', type_label)
+
+        for file in project_files:
+            file.file_name = os.path.basename(file.full_file_path())
+    
+    return render(request, "projects/user/photo_detail.html", {
+        "project": project, 
+        'project_file': project_file,
+        "project_files": project_files, 
+        "type_label": type_label,     
+        'back_url': back_url,   
+        'file_type': type
+        })
+
+    # return render(request, "projects/user/photo_detail.html")
+
 
 
 

@@ -50,8 +50,8 @@ def login_view(request):
     if request.user.is_authenticated:
         # Если пользователь уже авторизован, перенаправляем его на нужную страницу
         if request.user.is_superuser:
-            return redirect('admin_all_projects_page')  # Замените на ваше целевое представление для админов
-        return redirect('user_all_projects')  # Замените на ваше целевое представление для обычных пользователей
+            return redirect('update_user', type='admin', user_id=user.id)  # Замените на ваше целевое представление для админов
+        return redirect('user_all_projects_page')  # Замените на ваше целевое представление для обычных пользователей
     print(request.POST)
 
     form = UserLoginForm(request.POST or None)
@@ -60,8 +60,8 @@ def login_view(request):
         login(request, user)
         print('user', user.is_superuser)
         if user.is_superuser:
-            return redirect('admin_all_projects_page')  
-        return redirect('user_all_projects') 
+            return redirect('update_user', type='admin', user_id=user.id)  
+        return redirect('user_all_projects_page') 
     print("Form errors:", form.errors)
     return render(request, 'account/login.html', {'form': form})
 
