@@ -2,6 +2,11 @@ import os
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from projects.models import Base
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from common_functional.utils import save_object
+
 
 from django.conf import settings
 
@@ -48,7 +53,7 @@ class Account(Base, AbstractBaseUser, PermissionsMixin):
     surname = models.CharField(max_length=255, blank=True, null=True, verbose_name='Фамилия')
     patronymic = models.CharField(max_length=255, blank=True, null=True, verbose_name='Отчество')
     phone = models.CharField(max_length=15, blank=True, null=True, verbose_name='Номер телефона')
-    avatar = models.FileField(upload_to='account/', blank=True, null=True, verbose_name='Аватар')  
+    avatar = models.FileField(upload_to=get_upload_path, blank=True, null=True, verbose_name='Аватар')  
 
      # Поле для роли
     role = models.CharField(max_length=10, choices=Role.choices, default=Role.DIRECTOR, verbose_name='Роль')
@@ -76,3 +81,10 @@ class Account(Base, AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'Пользователи'
 
 
+
+@receiver(post_save, sender=Account)
+def save_account_avatar(instance, created, **kwargs):
+    if created and instance.avatar:
+        path = 'accounts'
+        save_object(instance.pk, instance.avatar, path)
+        instance.save(update_fields=['avatar'])

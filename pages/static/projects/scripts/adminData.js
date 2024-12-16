@@ -36,20 +36,29 @@ function getFilesBlock() {
     fieldsList.forEach((field, index) => {
         if (field.inputId == 'photo-file-input') {
             fileBlockItem = `
+            <div style='display: flex; align-items: center;'>
             <button id="${field.buttonId}" class="file-input-button btn btn-primary">${field.label}</button>
+            <p style='margin-left: 1em; margin-bottom: 0'>Принимаются только jpeg, jpg и png файлы</p>            
+            </div>            
             <input type="file" id="${field.inputId}" multiple style="display: none;" accept="image/png, image/jpeg, image/jpg"/>
             <ul id="${field.ulId}"></ul>   
             <div id="files-list-block-${index+1}" class="files-list-block"></div>         
         `
         } else if (field.inputId == 'video-file-input') {
             fileBlockItem = `
+            <div style='display: flex; align-items: center;'>
             <button id="${field.buttonId}" class="file-input-button btn btn-primary">${field.label}</button>
+            <p style='margin-left: 1em; margin-bottom: 0'>Принимаются только mp4 и webm файлы</p>            
+            </div>
             <input type="file" id="${field.inputId}" multiple style="display: none;" accept="video/mp4, video/webm"/>
             <ul id="${field.ulId}"></ul>   
             <div id="files-list-block-${index+1}" class="files-list-block"></div>`
         } else {
             fileBlockItem = `
+            <div style='display: flex; align-items: center;'>
             <button id="${field.buttonId}" class="file-input-button btn btn-primary">${field.label}</button>
+            <p style='margin-left: 1em; margin-bottom: 0'>Принимаются только pdf и txt файлы</p>            
+            </div>
             <input type="file" id="${field.inputId}" multiple style="display: none;" accept="application/pdf, text/plain"/>
             <ul id="${field.ulId}"></ul>   
             <div id="files-list-block-${index+1}" class="files-list-block"></div>`

@@ -132,8 +132,7 @@ def other_files_page(request, type, id):
     print('type', type)
     project = get_object_or_404(Project, id=id)
     project_files = ProjectFile.objects.filter(file_project = project.id, type = type).order_by("created_at")
-    type_label = project_files.first().get_type_display()
-    print('type_label', type_label)
+    type_label = ProjectFile.FileType(type).label if type in dict(ProjectFile.FileType.choices) else None
 
     for file in project_files:
         file.file_name = os.path.basename(file.full_file_path())
