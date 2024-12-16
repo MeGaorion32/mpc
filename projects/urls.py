@@ -5,16 +5,7 @@ from . import views
 urlpatterns = [    
     # Админ
     # path("admin/create", views.create_project, name="project_create"),
-    path("admin/create/", views.create_project_page, name="project_create_page"),
-    path("admin/update/<int:id>", views.update_project_page, name="project_update_page"),
-    path("admin/projects/all", views.admin_all_projects_page, name="admin_all_projects_page"),
-    path("admin/users/all", views.admin_all_users_page, name="admin_all_users_page"),
-
-    path("user/all", views.user_all_projects_page, name="user_all_projects_page"),    
-    path("user/<int:id>/", views.user_project_detail, name="user_project_detail_page"),
-    path("photo_video/<int:id>/", views.project_photo_video_page, name="project_photo_video_page"),
-    path("other_files/<str:type>/<int:id>/", views.other_files_page, name="project_other_files_page"),
-    path("file/detail/", views.photo_video_detail_page, name="project_detail_file_page"),
+    
 
     path("admin/<int:id>/", views.admin_project_detail, name="admin_project_detail"),
 

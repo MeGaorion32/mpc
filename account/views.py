@@ -50,7 +50,7 @@ def login_view(request):
     if request.user.is_authenticated:
         # Если пользователь уже авторизован, перенаправляем его на нужную страницу
         if request.user.is_superuser:
-            return redirect('update_user', type='admin', user_id=user.id)  # Замените на ваше целевое представление для админов
+            return redirect('update_user', type='admin', user_id=request.user.id)  # Замените на ваше целевое представление для админов
         return redirect('user_all_projects_page')  # Замените на ваше целевое представление для обычных пользователей
     print(request.POST)
 
