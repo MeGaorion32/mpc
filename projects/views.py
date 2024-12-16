@@ -147,9 +147,28 @@ def create_project(request):
     
     return render(request, 'upload.html', {'users': users})
 
+def update_project_status(request, id):
+
+    if request.method == 'POST':
+        completed = False
+        if request.POST.get('completed', False) == 'true':
+            completed = True
+        project = get_object_or_404(Project, id=id)
+        project.completed = completed
+        project.save()
+
+        projects = Project.objects.filter(completed=False).order_by("-created_at")
+        completed_projects = Project.objects.filter(completed=True).order_by("-created_at")
+        context = {
+            "projects": projects,
+            "completed_projects": completed_projects,
+            }
+        return render(request, "projects/admin/list.html", context)
+
+
 def delete_project(request, id):
         
-        if request.method == 'DELETE':
+        if request.method == 'POST':
 
             project = get_object_or_404(Project, id=id)
             project.delete()
@@ -160,7 +179,7 @@ def delete_project(request, id):
                 "projects": projects,
                 "completed_projects": completed_projects,
                 }
-            return render(request, "projects/user/list.html", context)
+            return render(request, "projects/admin/list.html", context)
         
 
 def delete_project_file(request, id):

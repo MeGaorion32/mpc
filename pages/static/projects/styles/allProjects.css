@@ -4,7 +4,7 @@
     padding: 3em;   
 }
 
-.all-projects-block {
+.completed-projects-block {
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -16,7 +16,7 @@
 .projects-block {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     /* width: 40%;
     padding: 2em; */
@@ -61,5 +61,10 @@
 
 .project-name {
     color: #fff;
+}
+
+.project-buttons-form, .buttons-block, .project-button {
+    width: 100%;
+    margin-top: 0.5em;
 }
 

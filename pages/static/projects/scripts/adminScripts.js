@@ -92,7 +92,7 @@ $(document).ready(function() {
 
         if (fileId != null) {
             $.ajax({
-                url: '/projects/admin/projectFile/delete/' + fileId,  // URL вашего представления
+                url: '/projects/projectFile/delete/' + fileId,  // URL вашего представления
                 type: 'DELETE',
                 headers: {
                     'X-CSRFToken': csrfToken // Передаем CSRF-токен в заголовках

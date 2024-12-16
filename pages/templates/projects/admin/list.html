@@ -30,7 +30,18 @@
                         <img src="{% static 'images/logo.png' %}" alt="">
                     {% endif %}
                 </div>            
-            </a>     
+            </a>    
+            <div class="buttons-block">
+                <form action="{% url 'project_update_status' project.id %}" method="POST" class="project-buttons-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="completed" value="true">
+                    <button type="submit" class="btn btn-primary project-button edit-button">Завершить</button>
+                </form>
+                <form action="{% url 'project_delete' project.id %}" method="POST" class="project-buttons-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger project-button delete-button">Удалить</button>
+                </form>
+            </div> 
     
             {% endfor %}
     
@@ -39,7 +50,7 @@
       
 
     </section>
-    <section class="all-projects-block">
+    <section class="completed-projects-block">
         <h2>Завершенные проекты</h2>
         <div class="projects-block">
             {% for project in completed_projects %}
@@ -56,6 +67,17 @@
                     {% endif %}
                 </div>            
             </a>     
+            <div class="buttons-block">
+                <form action="{% url 'project_update_status' project.id %}" method="POST" class="project-buttons-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="completed" value="false">
+                    <button type="submit" class="btn btn-primary project-button edit-button">Вернуть в реализуемые</button>
+                </form>
+                <form action="{% url 'project_delete' project.id %}" method="POST" class="project-buttons-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger project-button delete-button">Удалить</button>
+                </form>
+            </div> 
     
             {% endfor %}
     
