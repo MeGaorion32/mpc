@@ -16,6 +16,7 @@
             {% for file in project_files %}
             {% with file_name=file.full_file_path|split:"/" %}
                 <iframe src="{% static 'projects/ViewerJS/index.html' %}#{{ file.full_file_path }}" style="width:70%; height:600px;" frameborder="0"></iframe>
+                <!-- <embed src="https://docs.google.com/gview?url={{ file.full_file_path }}&embedded=true" style="width: 70%; height: 600px;" frameborder="0"> -->
                 <p>{{ file_name|last }}</p>  <!-- отображаем имя файла -->
             {% endwith %}
             <!-- <p>{{ file.type }}</p> -->

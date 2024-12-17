@@ -43,11 +43,13 @@
                 <input type="hidden" name="type" value="video"> 
                 <input type="hidden" name="url" value="project_photo_video_page"> 
 
-                <button type="button" class="video-button" style="background: none; border: none; padding: 0;">
-                    <video class="photo-video-img" id="project_video" controls>    
+                <button type="submit" class="video-button" style="background: none; border: none; padding: 0;">
+                    <video class="photo-video-img" id="project_video">    
                         <source src="{{ video.full_file_path }}" type="video/mp4">    
                     </video>    
+                   
                 </button>
+             
                     
 
             </form>     
@@ -66,23 +68,25 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
-    document.querySelectorAll('.photo-video-img').forEach(video => {        
-        // Добавление обработчика события на клик по видео    
-        video.addEventListener('click', function(e) {        
-            e.stopPropagation(); // Остановить всплытие события    
+    // document.querySelectorAll('.photo-video-img').forEach(video => {        
+    //     // Добавление обработчика события на клик по видео    
+    //     video.addEventListener('click', function(e) {        
+    //         e.stopPropagation(); // Остановить всплытие события    
     
-            // Отмена стандартного воспроизведения видео    
-            if (this.paused) {
+    //         // Отмена стандартного воспроизведения видео    
+    //         if (this.paused) {
     
-                this.play(); // Включите воспроизведение видео    
-            } else {    
-                this.pause(); // Остановите воспроизведение, например, если видео уже играет    
-            }    
+    //             this.play(); // Включите воспроизведение видео    
+    //         } else {    
+    //             this.pause(); // Остановите воспроизведение, например, если видео уже играет    
+    //         }    
     
-            // Отправка формы    
-            this.closest('form').submit();     
-        });       
-    });    
+    //         // Отправка формы    
+    //         this.closest('form').submit();     
+    //     });       
+    // });    
+
+   
 </script>
 <!-- <script>
     document.querySelectorAll('.photo-video-img').forEach(video => {    

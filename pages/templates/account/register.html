@@ -56,6 +56,10 @@
 
                     </div>
 
+                    <div>
+                        <p>Пароль должна быть не менее 8 символов, не слишком распространенный и не состоять только из цифр</p>
+                    </div>
+
                     {% if update_user %}                    
                     <button class="btn btn-warning" type="submit">Изменить пользователя</button>
                     {% else %}
@@ -92,7 +96,7 @@
 <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
 {% if user.is_active %}
 {{ user }}    
-<a href="{% url 'user_all_projects' %}">Все проекты</a>
+<a href="{% url 'user_all_projects_page' %}">Все проекты</a>
 <form method="post" action="{% url 'logout' %}" style="display: inline;">
     {% csrf_token %}
     <button type="submit">Выйти</button>

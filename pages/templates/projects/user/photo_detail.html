@@ -20,7 +20,7 @@
                 <img src="{{ project_file.full_file_path }}" alt="" class="photo-video-item">
                 {% elif file_type == 'video' %}
                 <video class="photo-video-item" controls>
-                    <source src="{{ video.full_file_path }}" type="video/mp4">
+                    <source src="{{ project_file.full_file_path }}" type="video/mp4">
                 </video>
                 {% endif %}
             </div>
@@ -31,7 +31,7 @@
                 <img src="{{ file.full_file_path }}" alt="" class="photo-video-item">
                 {% elif file_type == 'video' %}
                 <video class="photo-video-item" controls>
-                    <source src="{{ video.full_file_path }}" type="video/mp4">
+                    <source src="{{ file.full_file_path }}" type="video/mp4">
                 </video>
                 {% endif %} 
             </div>

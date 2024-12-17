@@ -69,7 +69,7 @@ def create_project(request):
             'info': request.POST.get('info'),
             'user': user,
             'completed': completed,
-            'file': request.FILES.get('file'),
+            'file': request.FILES.get('projectFile'),
         }    
         print('data', data)    
         updatePage = False

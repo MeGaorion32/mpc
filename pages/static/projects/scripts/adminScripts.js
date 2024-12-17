@@ -41,14 +41,16 @@ $(document).ready(function() {
 
         filesList.forEach(file => {
             for (let i = 0; i < file.files.length; i++) {
-                if(file.name == 'photos' && file.files.length) {
-                    formData.append('file', file.files[0]);
+                if(file.name == 'photo' && file.files.length) {
+                    formData.append('projectFile', file.files[0]);
                 }
                 formData.append(file.name, file.files[i]);  // добавляем поле "photos"
                 
             }
 
-        })        
+        })     
+        
+        console.log('formData', formData);
 
         $.ajax({
             url: '/projects/create/',  // URL вашего представления
@@ -149,18 +151,35 @@ let selectedFileInfo = {
 function selectFile(fieldIndex, fileIndex, fileURL=null, fileId=null) {
     console.log('Select file', fileURL);
     console.log('fileId', fileId);
+    console.log('viewerUrl', viewerUrl+'#');
+    const extension = fileURL.split('.').pop().split(/[\?#]/)[0]; // получаем часть после последней точки.   
+
+    console.log('File extension:', extension);
+
+    let selectedImage = '';
 
     // Очищаем предыдущие изображения в блоке
     $('#selected-file').empty();
-
     // Создаём новый элемент img с переданным URL и добавляем его в блок 
-    const selectedImage = `<img class="selected-image" src="${fileURL}" alt="Selected file" class="selected-image">`; 
+    if(extension == 'pdf') {
+        selectedImage = ` <iframe src="${viewerUrl}#${fileURL}" style="width:70%; height:90%;" frameborder="0"></iframe>`;
+    } else if (extension == 'mp4' || extension == 'webm') {
+        selectedImage = `
+        <video class="photo-video-item" style="width:70%; height:90%;" controls>            
+            <source src="${fileURL}" type="video/${extension}">
+            Your browser does not support the video tag.
+        </video>`
+    } else {
+        selectedImage = `<img class="selected-image" src="${fileURL}" alt="Selected file" class="selected-image">`;
+    }    
+     
     $('#selected-file').append(selectedImage);
 
     // Сохраняем информацию о выбранном файле
     selectedFileInfo.fieldIndex = fieldIndex;
     selectedFileInfo.fileIndex = fileIndex;
     selectedFileInfo.fileId = fileId;
+
 }
 
 
@@ -171,13 +190,35 @@ function setFiles(index, files) {
         
         filesList[index].files.push(files[i]);
         const fileURL = URL.createObjectURL(files[i]);
+        const extension = fileURL.split('.').pop().split(/[\?#]/)[0]; // получаем часть после последней точки.   
+
+        console.log('File extension:', extension);
         // $(`#${field.ulId}`).append(`<li>${files[i].name}</li>`);  // Отображаем имена файлов
-        $(`#files-list-block-${index+1}`).append(`
-            <img id="files-list-image-${index+1}-${i+1}" 
-            class="files-list-image" src="${fileURL}" 
-            alt="${files[i].name}" 
-            onclick="selectFile(${index}, ${filesList[index].files.length - 1}, '${fileURL}')">
-            `)
+        if (extension == 'pdf') {
+            $(`#files-list-block-${index+1}`).append(`
+                <img id="files-list-image-${index+1}-${i+1}" 
+                class="files-list-image" src="${pdfFile}" 
+                alt="${files[i].name}" 
+                onclick="selectFile(${index}, ${filesList[index].files.length - 1}, '${fileURL}')">
+                `)
+
+        } else if (extension == 'mp4' || extension == 'webm') {
+            $(`#files-list-block-${index+1}`).append(`
+                <img id="files-list-image-${index+1}-${i+1}" 
+                class="files-list-image" src="${videoFile}" 
+                alt="${files[i].name}" 
+                onclick="selectFile(${index}, ${filesList[index].files.length - 1}, '${fileURL}')">
+                `)
+
+        } else {
+            $(`#files-list-block-${index+1}`).append(`
+                <img id="files-list-image-${index+1}-${i+1}" 
+                class="files-list-image" src="${fileURL}" 
+                alt="${files[i].name}" 
+                onclick="selectFile(${index}, ${filesList[index].files.length - 1}, '${fileURL}')">
+                `)
+        }
+        
     }
 }
 

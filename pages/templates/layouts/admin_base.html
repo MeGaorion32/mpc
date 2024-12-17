@@ -14,6 +14,7 @@
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mainStyles.css' %}">
 
     {% block headScripts %}{% endblock headScripts %}
 </head>
@@ -68,7 +69,7 @@
     <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
     
     {{ user }}    
-    <a href="{% url 'user_all_projects' %}">Все проекты</a>
+    <a href="{% url 'user_all_projects_page' %}">Все проекты</a>
     <form method="post" action="{% url 'logout' %}" style="display: inline;">
         {% csrf_token %}
         <button type="submit">Выйти</button>

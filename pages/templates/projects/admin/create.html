@@ -117,9 +117,24 @@
     <script type="application/json" id="csrf-token">
         {{ csrf_token }}
     </script>   
+
+    <script type="application/json" id="viewer-url">
+        {% static 'projects/ViewerJS/index.html' %}
+    </script>   
+
+    <script type="application/json" id="video-file">
+        {% static 'projects/images/videofile.jpg' %}
+    </script>   
+
+    <script type="application/json" id="pdf-file">
+        {% static 'projects/images/pdf.jpeg' %}
+    </script>   
     
     <script>   
         const csrfToken = document.getElementById('csrf-token').textContent;
+        const viewerUrl = document.getElementById('viewer-url').textContent.trim();
+        const videoFile = document.getElementById('video-file').textContent.trim();
+        const pdfFile = document.getElementById('pdf-file').textContent.trim();
         let projectFiles = $("#project-data").attr("data");     
         let updatePage = $("#update-page").attr("data");
         let projectId = $("#projectId").attr("data");

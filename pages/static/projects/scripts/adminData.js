@@ -81,13 +81,44 @@ function displayExistingFiles() {
             if (listFile.name === file.type.toLowerCase()) {
                 // listFile.files.push(file);
                 const fileURL = file.full_file_path;
-                $(`#files-list-block-${index + 1}`).append(`
-                    <img class="files-list-image" 
-                    id="files-list-image-${file.id}"
-                    src="${fileURL}" 
-                    alt="${file.path}" 
-                    onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
-                `);
+                const extension = fileURL.split('.').pop().split(/[\?#]/)[0]; // получаем часть после последней точки.   
+
+                console.log('File extension:', extension);
+                // $(`#${field.ulId}`).append(`<li>${files[i].name}</li>`);  // Отображаем имена файлов
+                if (extension == 'pdf') {
+                    $(`#files-list-block-${index + 1}`).append(`
+                        <img class="files-list-image" 
+                        id="files-list-image-${file.id}"
+                        src="${pdfFile}" 
+                        alt="${file.name}" 
+                        onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                    `);
+
+                } else if (extension == 'mp4' || extension == 'webm') {
+                    $(`#files-list-block-${index + 1}`).append(`
+                        <img class="files-list-image" 
+                        id="files-list-image-${file.id}"
+                        src="${videoFile}" 
+                        alt="${file.name}" 
+                        onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                    `);
+
+                } else {
+                    $(`#files-list-block-${index + 1}`).append(`
+                        <img class="files-list-image" 
+                        id="files-list-image-${file.id}"
+                        src="${fileURL}" 
+                        alt="${file.name}" 
+                        onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                    `);
+                }
+                // $(`#files-list-block-${index + 1}`).append(`
+                //     <img class="files-list-image" 
+                //     id="files-list-image-${file.id}"
+                //     src="${fileURL}" 
+                //     alt="${file.path}" 
+                //     onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                // `);
                 // listFile.files.push(file.full_file_path);
             }
            

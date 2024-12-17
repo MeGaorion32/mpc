@@ -26,8 +26,10 @@ SECRET_KEY = 'django-insecure-r6&75#+jr)6m!6k^5*(*wyt3wob@%z7!9f33s3-5=6l9ekyef_
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['mrisma8g.beget.tech']
 
 BASE_URL = 'http://localhost:8000'
+# BASE_URL = 'http://mrisma8g.beget.tech'
 
 
 # Application definition
@@ -100,9 +102,9 @@ DATABASES = {
 
     # 'default': { 
     #     'ENGINE': 'django.db.backends.mysql', 
-    #     'NAME': 'djangoApp', 
-    #     'USER':'root', 
-    #     'PASSWORD':'mysql', 
+    #     'NAME': 'mrisma8g_mpc', 
+    #     'USER':'mrisma8g_mpc', 
+    #     'PASSWORD':'mpcPass1234', 
     #     'HOST':'localhost', 
     #     'PORT':'3306' 
     # } 
@@ -174,6 +176,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),

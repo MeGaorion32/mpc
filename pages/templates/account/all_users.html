@@ -55,7 +55,7 @@
 <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
 {% if user.is_active %}
 {{ user }}    
-<a href="{% url 'user_all_projects' %}">Все проекты</a>
+<a href="{% url 'user_all_projects_page' %}">Все проекты</a>
 <form method="post" action="{% url 'logout' %}" style="display: inline;">
     {% csrf_token %}
     <button type="submit">Выйти</button>
