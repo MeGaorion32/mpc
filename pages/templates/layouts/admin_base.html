@@ -17,67 +17,101 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/mainStyles.css' %}">
 
     {% block headScripts %}{% endblock headScripts %}
+    <style>
+        .base-main {
+            background-image: url('{% static "images/main_photo.png" %}');
+            background-size: cover; 
+            background-position: center; 
+            background-color: #F4F4F4;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex: 1;
+        }
+
+        .base-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(244, 244, 244, 0.8); /* Полупрозрачный светлый цвет */
+            z-index: 1; /* Установите ниже по ее положению */
+        }
+
+        .base-main > * {
+            position: relative; /* Элементы внутри будут отображаться выше псевдо-элемента */
+            z-index: 2; /* Установите выше по ее положению */
+            }
+    </style>
 </head>
 <body>
-   
-    {% if user.is_superuser %}   
+    <!-- <section class="base-main-section"> -->
+        {% if user.is_superuser %}   
 
-    <header class="auth-header">
-        <div class="logo">
-            <img class="logo-img" src="{% static 'images/logo.png' %}" alt="">
-        </div>
-        <div class="account">
-            <!-- <img class="account-img" src="{% static 'images/user_avatar.png' %}" alt=""> -->            
-            <span class="material-icons">
-                person_outline
-            </span>
-            <span>{{ user }}</span>
-            <span class="material-icons" id="toggle-dropdown" style="cursor: pointer;">
-                expand_more
-            </span>
-        </div>
-
-        <div id="logout-button-block" class="logout-button-block" style="display: none;">
-            <p class="login-head">Портал мониторинга хода строительства</p>
-            <p class="login-head">{{ user }}</p>
-            <form method="post" action="{% url 'logout' %}" class="logout-form">    
-                {% csrf_token %}    
-                <button class="logout-button" type="submit">Выйти</button>    
-            </form>    
-        </div>        
-    </header>
-
-    <main class="base-main">        
-        <section class="base-menu">
-            <nav class="base-menu-items">
-                <a class="base-menu-item" href="{% url 'admin_all_projects_page' %}">Все проекты</a>
-                <a class="base-menu-item" href="{% url 'admin_all_users_page' %}">Все пользователи</a>
-                <a class="base-menu-item" href="{% url 'project_create_page' %}">Добавить проект</a>                    
-                <a class="base-menu-item" href="{% url 'register' %}">Регистрировать пользователя</a>
-                <a class="base-menu-item" href="{% url 'update_user' 'admin' user.id %}">Профиль</a>
-            </nav>
-        </section>
-        <section class="base-content">
-            {% block content %}{% endblock content %}
-        </section>
-    </main>
+        <header class="auth-header">
+            <div class="logo">
+                <img class="logo-img" src="{% static 'images/logo.png' %}" alt="">
+            </div>
+            <div class="account">
+                <!-- <img class="account-img" src="{% static 'images/user_avatar.png' %}" alt=""> -->            
+                <span class="material-icons">
+                    person_outline
+                </span>
+                <span>{{ user }}</span>
+                <span class="material-icons" id="toggle-dropdown" style="cursor: pointer;">
+                    expand_more
+                </span>
+            </div>
     
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'projects/scripts/baseScript.js' %}"></script>
+            <div id="logout-button-block" class="logout-button-block" style="display: none;">
+                <p class="login-head">Портал мониторинга хода строительства</p>
+                <p class="login-head">{{ user }}</p>
+                <form method="post" action="{% url 'logout' %}" class="logout-form">    
+                    {% csrf_token %}    
+                    <button class="logout-button" type="submit">Выйти</button>    
+                </form>    
+            </div>        
+        </header>
 
-    {% else %}
-    <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
+        <section class="content-section">
+
+        </section>
     
-    {{ user }}    
-    <a href="{% url 'user_all_projects_page' %}">Все проекты</a>
-    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-        {% csrf_token %}
-        <button type="submit">Выйти</button>
-    </form>     
-    {% endif %}
+        <main class="base-main">        
+            <section class="base-menu">
+                <nav class="base-menu-items">
+                    <a class="base-menu-item" href="{% url 'admin_all_projects_page' %}">Все проекты</a>
+                    <a class="base-menu-item" href="{% url 'admin_all_users_page' %}">Все пользователи</a>
+                    <a class="base-menu-item" href="{% url 'project_create_page' %}">Добавить проект</a>                    
+                    <a class="base-menu-item" href="{% url 'register' %}">Регистрировать пользователя</a>
+                    <a class="base-menu-item" href="{% url 'update_user' 'admin' user.id %}">Профиль</a>
+                </nav>
+            </section>
+            <section class="base-content">
+                {% block content %}{% endblock content %}
+            </section>
+        </main>
+        
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'projects/scripts/baseScript.js' %}"></script>
+    
+        {% else %}
+        <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
+        
+        {{ user }}    
+        <a href="{% url 'user_all_projects_page' %}">Все проекты</a>
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>     
+        {% endif %}
+    
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        {% block footerScripts %}{% endblock footerScripts %}
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    {% block footerScripts %}{% endblock footerScripts %}
+    <!-- </section> -->
 
 </body>
 </html>

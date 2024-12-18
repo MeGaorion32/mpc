@@ -1,0 +1,115 @@
+/* Нетбук и ноут */
+@media (max-width: 1280px) and (min-width: 1024px) {
+
+}
+
+
+/* Планш */
+@media (max-width: 1023px) and (min-width: 768px) {
+
+}
+
+/* Айфон */
+@media (max-width: 450px) {
+
+    .auth-header {        
+        padding: 1.5em;        
+    }
+
+    .login-page {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .login-text {
+        font-size: 0.85em;
+    }
+
+    .login-remember {
+        display: flex;
+        justify-content: flex-start;
+        width: 50%;
+    }
+
+    .remember-text {
+        margin-left: 0.5em;
+    }
+}
+
+/* Мобила мелкая */
+@media (max-width: 350px) {
+
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .logo {
+        width: 4.3em;
+        height: 1.5em;
+    }
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-page {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .login-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 18em;
+        height: 17.75em;
+        border-radius: 2em;
+        background: #fff;
+        padding: 1em;
+    }
+
+    .login-block-head {
+        width: 11.7em;
+        height: 1.75em;   
+        font-size: 0.875em;     
+    }
+
+    .login-input {
+        width: 225.15px;
+        height: 31.27px;
+        font-size: 0.55em;
+    }
+
+    .login-text {
+        font-size: 0.829em;
+    }
+
+    .login-button {
+        width: 225px;
+        height: 34px;
+        font-size: 0.765em;
+    }
+
+    .login-form-footer {
+        display: block;
+    }
+
+    .login-remember {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .remember-text {
+        margin-left: 1em;
+        font-size: 0.83em;
+    }
+
+    .login-form {
+        height: 70%;
+    }
+}

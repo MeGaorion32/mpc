@@ -99,12 +99,17 @@ html, body {
     cursor: pointer;
 }
 
-.base-main {   
+/* .base-main {   
     background: #F4F4F4;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex: 1;
+} */
+
+.auth-header {
+    z-index: 3;
+    background-color: #fff;
 }
 
 .base-menu-items {
@@ -119,12 +124,26 @@ html, body {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    width: 100%;
-    background: #0e39c7;
-    border-color: #0e39c7;
+    background: #fff;
+    border-color: #fff;
     padding: 0.5em;
-    color: #fff;
+    color: #000;
     margin-top: 1em;
+    width: 16em;
+    height: 4em;
+    border-radius: 10px;
+    /* font-size: 1.25em; */
+    font-weight: 300;
+}
+
+.list-head-text {
+    font-size: 2.25em;
+    font-weight: 700;
+}
+
+.project-name {
+    font-size: 1.56em;
+    font-weight: 700;
 }
 
 .base-menu {
@@ -139,3 +158,27 @@ html, body {
 .change-project-menu-item {
     margin-top: 5em;
 }
+
+.detail-file-form, .detail-file-button {
+    width: 100%;
+    height: 100%;
+}
+
+.detail-file-form {
+    display:inline;
+}
+
+.detail-file-button {
+    background: none; 
+    border: none; 
+    padding: 0;
+}
+
+.head-menu-button {
+    color: #000;
+    background: none; 
+    border: none; 
+    padding: 0;
+    font-weight: 700;
+}
+

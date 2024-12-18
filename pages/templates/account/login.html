@@ -30,13 +30,13 @@
             <div class="login-form-footer">
                 <div class="login-remember">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                    <p class="p-not-margin">Запомнить меня</p>
+                    <p class="p-not-margin login-text remember-text">Запомнить меня</p>
                 </div>
                 
-                <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+                <a href="{% url 'password_reset' %}"><span class="login-text">Забыли пароль?</span></a>
                 
             </div>            
-            <button class="login-button" type="submit">Войти</button>
+            <button class="login-button login-text" type="submit">Войти</button>
         </form>        
     </div>
 

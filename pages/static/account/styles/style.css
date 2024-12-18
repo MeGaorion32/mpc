@@ -8,13 +8,13 @@ body {
     flex-direction: column; 
 }
 
-.auth-main {
+/* .auth-main {
     flex: 1; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     background: #F4F4F4;
-}
+} */
 
 .p-not-margin {
     margin: 0;
@@ -23,6 +23,10 @@ body {
 .login-page {
     display: flex;
     justify-content: center;
+}
+
+.login-text {
+    font-family: 'Golos', sans-serif;
 }
 
 .login-block {
@@ -103,6 +107,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1em 3em;
+    z-index: 3;
+    background-color: #fff;
 }
 
 .login-head {

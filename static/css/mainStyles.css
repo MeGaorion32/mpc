@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Golos';
+    src: url('/static/fonts/golos/golos.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
 }

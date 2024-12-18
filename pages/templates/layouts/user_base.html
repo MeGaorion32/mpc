@@ -22,6 +22,35 @@
     <link rel="stylesheet" href="{% static 'fontawesome-free-6.7.1-/css/regular.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome-free-6.7.1-/css/solid.css' %}"> -->
 
+    <style>
+        .user-base-main {
+            background-image: url('{% static "images/main_photo.png" %}');
+            background-size: cover; 
+            background-position: center; 
+            background-color: #F4F4F4;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex: 1;
+        }
+
+        .user-base-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(244, 244, 244, 0.9); /* Полупрозрачный светлый цвет */
+            z-index: 1; /* Установите ниже по ее положению */
+        }
+
+        .user-base-main > * {
+            position: relative; /* Элементы внутри будут отображаться выше псевдо-элемента */
+            z-index: 2; /* Установите выше по ее положению */
+            }
+    </style>
+
 
 </head>
 <body>

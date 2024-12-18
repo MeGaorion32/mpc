@@ -16,6 +16,35 @@
     <link href="{% static 'fontawesomefree/css/regular.css' %}" rel="stylesheet" type="text/css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mainStyles.css' %}">
+
+    <style>
+        .base-main {
+            background-image: url('{% static "images/main_photo.png" %}');
+            background-size: cover; 
+            background-position: center; 
+            background-color: #E0EBEB;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex: 1;
+        }
+
+        .base-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(244, 244, 244, 0.9); /* Полупрозрачный светлый цвет */
+            z-index: 1; /* Установите ниже по ее положению */
+        }
+
+        .base-main > * {
+            position: relative; /* Элементы внутри будут отображаться выше псевдо-элемента */
+            z-index: 2; /* Установите выше по ее положению */
+            }
+    </style>
 </head>
 <body>
    
@@ -32,9 +61,9 @@
             </div>
             <div class="head-menu-block">
                 {% if user.is_superuser %}
-                <a href="{% url 'admin_all_projects_page' %}" class="btn btn-primary head-menu-button head-link">Главная</a>
+                <a href="{% url 'admin_all_projects_page' %}" class="head-menu-button head-link">Главная</a>
                 {% else %}
-                <a href="{% url 'user_all_projects_page' %}" class="btn btn-primary head-menu-button head-link">Главная</a>
+                <a href="{% url 'user_all_projects_page' %}" class="head-menu-button head-link">Главная</a>
                 {% endif %}
 
 

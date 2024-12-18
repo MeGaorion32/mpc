@@ -82,11 +82,10 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
-    email = forms.CharField(max_length=150,                                
-                            widget=forms.TextInput(attrs={'class': 'form-control custom-name-class', 'placeholder': 'Email'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control login-input', 'placeholder': 'Email'}))
     password = forms.CharField(         
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control custom-name-class', 
+            'class': 'form-control login-input', 
             'placeholder': 'Пароль'
         })
 
