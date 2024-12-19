@@ -11,53 +11,57 @@
 
 {% block content %}
 <section class="photo-video-section">
-    <div class="photo-video-block">
-        <h2 class="photo-video-title">Фотографии проекта {{ project.name }}</h2>
+    <h2 class="photo-video-title">Фото и видео {{ project.name }}</h2>
+   
+    <div class="photo-video-block">        
         <div class="all-photo-video">
-            {% for photo in project_photos %}       
-            <form action="{% url 'project_detail_file_page' %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{ photo.id }}">
-                <input type="hidden" name="type" value="photo"> 
-                <input type="hidden" name="url" value="project_photo_video_page"> 
-
-                <button type="submit" style="background: none; border: none; padding: 0;">
-                    <img class="photo-video-img" id="project_photo" src="{{ photo.full_file_path }}" alt="Фото проекта"
-                    data-id="{{ photo.id }}" data-type="photo" data-url="projects/user/photo_video.html" data-token="{{ csrf_token }}">
-                </button>
-
-            </form>     
+            {% for video in project_videos %}    
+            <div class="video-block">
+                <form action="{% url 'project_detail_file_page' %}" method="post" class="photo-video-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ video.id }}">
+                    <input type="hidden" name="type" value="video"> 
+                    <input type="hidden" name="url" value="project_photo_video_page"> 
+    
+                    <button type="submit" class="video-button" style="background: none; border: none; padding: 0;">
+                        <video class="photo-video-img" id="project_video">    
+                            <source src="{{ video.full_file_path }}" type="video/mp4">    
+                        </video>    
+                       
+                    </button>
+    
+                </form>    
+            </div>   
+            
            
             {% endfor %}
         </div>
-        
+       
+       
     </div>
 
+
     <div class="photo-video-block">
-        <h2 class="photo-video-title">Все видео проекта {{ project.name }}</h2>
         <div class="all-photo-video">
-            {% for video in project_videos %}       
-            <form action="{% url 'project_detail_file_page' %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{ video.id }}">
-                <input type="hidden" name="type" value="video"> 
-                <input type="hidden" name="url" value="project_photo_video_page"> 
-
-                <button type="submit" class="video-button" style="background: none; border: none; padding: 0;">
-                    <video class="photo-video-img" id="project_video">    
-                        <source src="{{ video.full_file_path }}" type="video/mp4">    
-                    </video>    
-                   
-                </button>
-             
-                    
-
-            </form>     
-           
+            <!-- <div class="arrow-left"></div> -->
+            {% for photo in project_photos %}     
+            <div class="photo-block">
+                <form action="{% url 'project_detail_file_page' %}" method="post" class="photo-video-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ photo.id }}">
+                    <input type="hidden" name="type" value="photo"> 
+                    <input type="hidden" name="url" value="project_photo_video_page"> 
+    
+                    <button type="submit" class="photo-button" style="background: none; border: none; padding: 0;">
+                        <img class="photo-video-img" id="project_photo" src="{{ photo.full_file_path }}" alt="Фото проекта"
+                        data-id="{{ photo.id }}" data-type="photo" data-url="projects/user/photo_video.html" data-token="{{ csrf_token }}">
+                    </button>
+    
+                </form>     
+            </div>
             {% endfor %}
-        </div>
-       
-       
+            <!-- <div class="arrow-right"></div> -->
+        </div>        
     </div>
 
 </section>

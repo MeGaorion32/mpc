@@ -12,6 +12,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/openSans/OpenSans.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
 }

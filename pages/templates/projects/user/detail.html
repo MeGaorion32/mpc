@@ -18,39 +18,53 @@
 
 <section class="detail-content">
     <h1 class="detail-project-name">{{ project.name }}</h1> 
-    <div class="detail-images-block">
-        <!-- {% if project.file %}
-        <img id="projectImage" class="detail-project-img" src="{{ project.full_file_path }}" alt="Файл проекта">
-        {% else %}
-        <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
-        {% endif %}     -->
-        {% if project_photos|length > 0 %}
-        {% for photo in project_photos|slice:":3" %}
-        <form action="{% url 'project_detail_file_page' %}" method="post" class="detail-file-form">
-            {% csrf_token %}
-            <input type="hidden" name="id" value="{{ photo.id }}">
-            <input type="hidden" name="type" value="photo"> 
-            <input type="hidden" name="url" value="user_project_detail_page"> 
 
-            <button type="submit" class="detail-file-button">
-                <img id="projectImage" class="detail-project-img" src="{{ photo.full_file_path }}" alt="Файл проекта">                
-            </button>
-
-        </form>     
-        
-        {% endfor %}
-        {% else %}
-        <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
-        {% endif %}  
-        
-    </div>
-
-    <div class="project-info">
-        <h2>Описание проекта</h2>
-        <div class="project-info-text">
-        <p>{{ project.info }}</p>
+    {% if project_photos|length > 0 or project.info %}
+    <div class="project-details">
+        <div class="detail-images-block">
+            <!-- {% if project.file %}
+            <img id="projectImage" class="detail-project-img" src="{{ project.full_file_path }}" alt="Файл проекта">
+            {% else %}
+            <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
+            {% endif %}     -->
+            {% if project_photos|length > 0 %}
+            {% for photo in project_photos|slice:":3" %}
+            <form action="{% url 'project_detail_file_page' %}" method="post" class="detail-file-form">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ photo.id }}">
+                <input type="hidden" name="type" value="photo"> 
+                <input type="hidden" name="url" value="user_project_detail_page"> 
+    
+                <button type="submit" class="detail-file-button">
+                    <img id="projectImage" class="detail-project-img" src="{{ photo.full_file_path }}" alt="Файл проекта">                
+                </button>
+    
+            </form>     
+            
+            {% endfor %}
+            {% else %}
+            <img id="projectImage" class="detail-project-img" src="{% static 'images/logo.png' %}" alt="">
+            {% endif %}  
+            
         </div>
+    
+        <div class="project-info">
+            <h2>Описание проекта</h2>
+            <div class="project-info-text">
+            <p>{{ project.info }}</p>
+            </div>
+        </div>
+
     </div>
+    {% else %}
+    <div class="not-details">
+        <div class="not-details-block">
+            <p class="not-details-block-text">Данные временно отсутствуют</p>
+        </div>
+
+    </div>
+    {% endif %}
+    
     
 </section>
 

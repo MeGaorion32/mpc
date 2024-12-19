@@ -12,7 +12,7 @@
 
 
 <section class="all-projects-page-block">
-    <section class="projects-block">
+    <section class="implemented-projects-block">
         <h2 class="list-head-text">Реализуемые проекты</h2>     
         <div class="projects-block">
             {% for project in projects %}
@@ -25,7 +25,7 @@
                     {% if project.file %}
                         <img src="{{ project.full_file_path }}" alt="" class="project-image">
                     {% else %}
-                        <img src="{% static 'images/logo.png' %}" alt="">
+                        <img src="{% static 'images/logo.png' %}" alt="" class="project-image">
                     {% endif %}
                 </div>            
             </a>     
@@ -37,7 +37,7 @@
       
 
     </section>
-    <section class="all-projects-block">
+    <section class="completed-projects-block">
         <h2 class="list-head-text">Завершенные проекты</h2>
         <div class="projects-block">
             {% for project in completed_projects %}
@@ -50,7 +50,7 @@
                     {% if project.file %}
                         <img src="{{ project.full_file_path }}" alt="" class="project-image">
                     {% else %}
-                        <img src="{% static 'images/logo.png' %}" alt="">
+                        <img src="{% static 'images/logo.png' %}" alt="" class="project-image">
                     {% endif %}
                 </div>            
             </a>     

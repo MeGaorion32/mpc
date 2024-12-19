@@ -14,12 +14,14 @@
         <h2 class="other-files-title">{{ type_label }} проекта {{ project.name }}</h2>
         <div class="all-other-files">
             {% for file in project_files %}
-            {% with file_name=file.full_file_path|split:"/" %}
-                <iframe src="{% static 'projects/ViewerJS/index.html' %}#{{ file.full_file_path }}" style="width:70%; height:600px;" frameborder="0"></iframe>
+            <div class="other-file-block">
+                {% with file_name=file.full_file_path|split:"/" %}
+                <iframe src="{% static 'projects/ViewerJS/index.html' %}#{{ file.full_file_path }}" style="width:100%; height:100%;" frameborder="0"></iframe>
                 <!-- <embed src="https://docs.google.com/gview?url={{ file.full_file_path }}&embedded=true" style="width: 70%; height: 600px;" frameborder="0"> -->
-                <p>{{ file_name|last }}</p>  <!-- отображаем имя файла -->
-            {% endwith %}
-            <!-- <p>{{ file.type }}</p> -->
+                <a class="file-name-url" href="{{ file.full_file_path }}">{{ file_name|last }}</a>  <!-- отображаем имя файла -->
+                {% endwith %}
+                <!-- <p>{{ file.type }}</p> -->
+            </div>           
             {% endfor %}
         </div>
         

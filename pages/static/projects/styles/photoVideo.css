@@ -2,22 +2,149 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-}
-
-.photo-video-img {
-    width: 10em;
-    height: 5em;    
-}
-
-.photo-video-block {
-    width: 70%;
-    margin-bottom: 3em;
-    border: 1px solid gray;
-    padding: 1em;
+    justify-content: space-between;    
 }
 
 .photo-video-title {
     text-align: center;
     margin-bottom: 1em;
+    font-size: 2.25em;
+    font-weight: 700;
+}
+
+.photo-video-block {
+    width: 70%;
+    margin-bottom: 3em;
+    padding: 1em;
+    overflow: hidden; /* Скрываем все, что превышает границы */
+}
+
+.photo-video-form {
+    display: flex;       /* Используем flexbox */
+    align-items: center;
+    justify-content: center;
+}
+
+.all-photo-video {
+    display: flex;       /* Используем flexbox */
+    justify-content: flex-start;
+    overflow-x: auto;   
+    padding-bottom: 1em; /* Отступ для скролла */    
+    /* white-space: nowrap; */
+    width: 64em;
+
+    /* Стилизация контейнера для скролла */
+    position: relative;         /* Задаем относительное позиционирование */
+}
+
+.video-block, .photo-block {
+    width: 500px;
+    height: 300px;
+    border-radius: 30px;
+    background-color: #E0EBEB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em; /* Отступ между блоками */
+    flex-shrink: 0;  
+}
+
+.photo-button {
+    /* width: 90%; */
+    height: 100%;
+}
+
+.video-button {
+    width: 90%;
+    height: 100%;
+}
+
+.photo-video-img {
+    width: 100%;
+    height: 90%;    
+}
+
+.photo-video-form {
+    justify-content: center;
+}
+
+.photo-video-form {
+    width: 100%;
+    height: 100%;
+}
+
+
+.all-photo-video {
+    display: flex;
+    justify-content: flex-start; 
+    overflow-x: auto;          
+    padding: 1em 0;            /* Отступ сверху и снизу */
+    width: 64em;               
+
+    /* Стилизация контейнера для скролла */
+    position: relative;         /* Задаем относительное позиционирование */
+}
+
+.all-photo-video::-webkit-scrollbar {
+    height: 10px;               /* Высота скроллбара */
+}
+
+.all-photo-video::-webkit-scrollbar-track {
+    background: #853939;        /* Цвет внешней полоски */
+    border-radius: 5px;         /* Закругление внешней полоски */
+}
+
+.all-photo-video::-webkit-scrollbar-thumb {
+    background: #a9a9a9;        /* Цвет внутренней полоски */
+    border-radius: 5px;         /* Закругление внутренней полоски */
+}
+
+.all-photo-video::-webkit-scrollbar-thumb:hover {
+    background: #808080;        /* Цвет внутренней полоски при наведении */
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a9a9a9 #808080;
+
+  }
+  
+  /* для Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    height: 300px;
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #808080;
+    border-radius: 5px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #a9a9a9;
+    border-radius: 5px;
+    border: 3px solid #a9a9a9;
+  }
+
+/* Стрелки внутри скролла */
+.arrow-left,
+.arrow-right {
+    position: absolute;          /* Абсолютное позиционирование */
+    top: 50%;                   /* По центру по вертикали */
+    transform: translateY(-50%); /* Центрируем вертикально */
+    width: 0;                   /* Ширина */
+    height: 0;                  /* Высота */
+    border-style: solid;        /* Стиль границы */
+    cursor: pointer;            /* Указываем, что стрелки кликабельные */
+}
+
+.arrow-left {
+    left: 10px;                 /* Отступ от левого края */
+    border-width: 8px 8px 8px 0; /* Размеры треугольника налево */
+    border-color: transparent #a9a9a9 transparent transparent; /* Цвет треугольника */
+}
+
+.arrow-right {
+    right: 10px;                /* Отступ от правого края */
+    border-width: 8px 0 8px 8px; /* Размеры треугольника направо */
+    border-color: transparent transparent transparent #a9a9a9; /* Цвет треугольника */
 }

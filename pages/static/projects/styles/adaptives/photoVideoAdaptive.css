@@ -1,0 +1,127 @@
+/* Нетбук и ноут */
+@media (max-width: 1280px) and (min-width: 1024px) {
+
+    .first-head-block {
+        width: 25%;
+    }
+
+    .auth-header {        
+        padding: 1em 3em;        
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+
+    }  
+
+  
+}
+
+/* Планш */
+@media (max-width: 1023px) and (min-width: 768px) {
+
+    .auth-header {        
+        padding: 1em 1.5em;        
+    }
+
+    .first-head-block {
+        width: 32%;
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+    }    
+
+}
+
+/* Айфон */
+@media (max-width: 450px) {
+
+    .auth-header {        
+        padding: 1em 1.5em;        
+    }
+
+    .first-head-block {
+        width: 32%;
+    }
+
+    .head-logo-block {
+        width: 20em;
+        height: 2.75em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9.5em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+    }
+ 
+  
+}
+
+/* Мобила мелкая */
+@media (max-width: 350px) {
+
+    .auth-header {        
+        padding: 1em 1.5em;        
+    }
+
+    .first-head-block {
+        width: 32%;
+    }
+
+    .head-logo-block {
+        width: 20em;
+        height: 2.75em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9.5em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+    }  
+  
+}
+

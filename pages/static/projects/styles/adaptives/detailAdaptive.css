@@ -1,0 +1,366 @@
+/* Нетбук и ноут */
+@media (max-width: 1280px) and (min-width: 1024px) {
+
+    .first-head-block {
+        width: 25%;
+    }
+
+    .auth-header {        
+        padding: 1em 3em;        
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+
+    }
+
+    .base-menu {
+        width: 30%;
+        padding: 0.5em;
+    }
+    
+    .base-content {
+        width: 70%;
+        height: 100%;
+    }
+
+    .detail-images-block, .project-info {
+        width: 23em;
+    }    
+
+    .project-info-text {
+        width: 100%;
+    }
+
+    .detail-project-name {
+        font-size: 1.16em;
+    }
+
+    .base-menu-item {
+        width: 12em;
+        height: 3em;
+    }
+
+    .not-details-block {
+        width: 28em;
+        height: 12.5em;
+    }
+
+    .not-details-block-text {
+        font-size: 1.44em;       
+    }
+  
+  
+}
+
+/* Планш */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .auth-header {        
+        padding: 1em 1.5em;        
+    }
+
+    .first-head-block {
+        width: 32%;
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+
+    }
+
+    .base-menu {
+        width: 30%;
+        padding: 0.5em;
+    }
+    
+    .base-content {
+        width: 70%;
+        height: 100%;
+    }
+
+    .detail-images-block, .project-info {
+        width: 17em;
+    }   
+
+    .project-info-text {
+        width: 100%;
+    }
+
+    .detail-project-name {
+        font-size: 1.125em;
+    }
+
+    .base-menu-item {
+        width: 12em;
+        height: 3em;
+    }
+
+    .not-details-block {
+        width: 22.75em;
+        height: 10.125em;
+    }
+
+    .not-details-block-text {
+        font-size: 1.154em;       
+    }
+  
+   
+
+}
+
+/* Айфон */
+@media (max-width: 450px) {
+    .auth-header {        
+        padding: 1em 1.5em;        
+    }
+
+    .first-head-block {
+        width: 32%;
+    }
+
+    .head-logo-block {
+        width: 20em;
+        height: 2.75em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9.5em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+
+    }
+
+    .base-menu {
+        display: none;
+    }
+
+    .head-menu-block {
+        display: none;
+    }
+
+    .detail-project-name {
+        font-size: 1.125em;
+    }
+
+    .detail-images-block, .project-info {
+        width: 17em;
+    }   
+
+    .project-info-text {
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+    }
+
+    .menu-modal {
+        display: none; /* Скрыть модальное окно по умолчанию */    
+        position: fixed;    
+        z-index: 1000;    
+        left: 0;    
+        top: 15%;    
+        width: 20em;    
+        height: 25em;    
+        overflow: auto;    
+        background-color: rgba(80, 166, 166, 0.9);   
+        border-radius: 15px;
+        padding: 1em;
+    }
+    
+    .menu-modal-content {                          
+        padding: 1em;    
+        width: 80%;    
+        margin: 0 auto; 
+    }    
+    
+    .menu-modal-close {    
+        color: #aaa;    
+        float: right;    
+        font-size: 28px;    
+        font-weight: bold;    
+        cursor: pointer;    
+    }    
+    
+    .menu-modal-close:hover,    
+    .menu-modal-close:focus {    
+        color: black;    
+        text-decoration: none;    
+        cursor: pointer;    
+    }  
+
+    .hamburger-base-menu-item {
+        list-style: none;
+        margin-top: 0.5em;
+    }
+
+    .hamburger-base-menu-url {
+        text-decoration: none;
+        color: #000;
+        font-family: 'Open Sans', sans-serif;
+    }    
+
+    .not-details-block {
+        width: 18em;
+        height: 8em;
+    }
+
+    .not-details-block-text {
+        font-size: 1em;       
+    }
+}
+
+/* Мобила мелкая */
+@media (max-width: 350px) {
+    
+    .auth-header {        
+        padding: 1em 1.5em;        
+    }
+
+    .first-head-block {
+        width: 32%;
+    }
+
+    .head-logo-block {
+        width: 20em;
+        height: 2.75em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9.5em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+
+    }
+
+    .base-menu {
+        display: none;
+    }
+
+    .head-menu-block {
+        display: none;
+    }
+
+    .detail-project-name {
+        font-size: 1.125em;
+    }
+
+    .detail-images-block, .project-info {
+        width: 17em;
+    }   
+
+    .project-info-text {
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+    }
+
+    .menu-modal {
+        display: none; /* Скрыть модальное окно по умолчанию */    
+        position: fixed;    
+        z-index: 1000;    
+        left: 0;    
+        top: 15%;    
+        width: 20em;    
+        height: 25em;    
+        overflow: auto;    
+        background-color: rgba(80, 166, 166, 0.9);   
+        border-radius: 15px;
+        padding: 1em;
+    }
+    
+    .menu-modal-content {                          
+        padding: 1em;    
+        width: 80%;    
+        margin: 0 auto; 
+    }    
+    
+    .menu-modal-close {    
+        color: #aaa;    
+        float: right;    
+        font-size: 28px;    
+        font-weight: bold;    
+        cursor: pointer;    
+    }    
+    
+    .menu-modal-close:hover,    
+    .menu-modal-close:focus {    
+        color: black;    
+        text-decoration: none;    
+        cursor: pointer;    
+    }  
+
+    .hamburger-base-menu-item {
+        list-style: none;
+        margin-top: 0.5em;
+    }
+
+    .hamburger-base-menu-url {
+        text-decoration: none;
+        color: #000;
+        font-family: 'Open Sans', sans-serif;
+    } 
+    
+    .not-details-block {
+        width: 100%;
+        height: 7em;
+    }
+
+    .not-details-block-text {
+        font-size: 1em;       
+    }
+  
+}
+

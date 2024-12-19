@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
     {% block styles %}{% endblock %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -16,6 +17,10 @@
     <link href="{% static 'fontawesomefree/css/regular.css' %}" rel="stylesheet" type="text/css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mainStyles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'projects/styles/adaptives/detailAdaptive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'projects/styles/adaptives/otherFiilesAdaptive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'projects/styles/adaptives/photoVideoAdaptive.css' %}">
+
 
     <style>
         .base-main {
@@ -27,6 +32,8 @@
             justify-content: space-around;
             align-items: flex-start;
             flex: 1;
+            position: relative;
+            
         }
 
         .base-main::before {
@@ -76,43 +83,70 @@
             <span class="material-icons">
                 person_outline
             </span>
-            <span>{{ user }}</span>
+            <span class="account-text">{{ user }}</span>
             <span class="material-icons" id="toggle-dropdown" style="cursor: pointer;">
                 expand_more
             </span>
         </div>
 
+        <div class="hamburger" id="hamburger">&#9776;</div>
+
         <div id="logout-button-block" class="logout-button-block" style="display: none;">
             <p class="login-head">Портал мониторинга хода строительства</p>
-            <p class="login-head">{{ user }}</p>
+            <p class="account-text">{{ user }}</p>
             <form method="post" action="{% url 'logout' %}" class="logout-form">    
                 {% csrf_token %}    
                 <button class="logout-button" type="submit">Выйти</button>    
             </form>    
-        </div>        
+        </div>   
+        
+        <div class="menu-modal" id="menu-modal">
+            <span class="menu-modal-close" id="menu-modal-close">&times;</span> 
+            <div class="menu-modal-content">                                          
+                <ul>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'graphics' project.id %}">Графики</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'summaries' project.id %}">Сводки</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'techpark' project.id %}">Парк техники</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'personal' project.id %}">Персонал ВЗис</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'equipment' project.id %}">Оснащение</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'laboratories' project.id %}">Лаборатории</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'ot_pb_oos' project.id %}">ОТ, ПБ, ООС</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'regulations' project.id %}">Предписания</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_photo_video_page' project.id %}">Фото, видео</a></li>   
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_other_files_page' 'reserv' project.id %}">Резервная позиция</a></li>
+                    {% if user.is_superuser %}    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url change-project-menu-item" href="{% url 'project_update_page' project.id %}">Изменить проект</a></li>    
+                    {% endif %}
+                </ul>    
+            </div>    
+        </div>
 
     </header>
-    <main class="base-main">        
-        <section class="base-menu">
-            <nav class="base-menu-items">
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'graphics' project.id %}">Графики</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'summaries' project.id %}">Сводки</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'techpark' project.id %}">Парк техники</a>                    
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'personal' project.id %}">Персонал ВЗис</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'equipment' project.id %}">Оснащение</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'laboratories' project.id %}">Лаборатории</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'ot_pb_oos' project.id %}">ОТ, ПБ, ООС</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'regulations' project.id %}">Предписания</a>                    
-                <a class="base-menu-item" href="{% url 'project_photo_video_page' project.id %}">Фото, видео</a>
-                <a class="base-menu-item" href="{% url 'project_other_files_page' 'reserv' project.id %}">Резервная позиция</a>
-                {% if user.is_superuser %} 
-                <a class="base-menu-item change-project-menu-item" href="{% url 'project_update_page' project.id %}">Изменить проект</a>
-                {% endif %}
-            </nav>
-        </section>
-        <section class="base-content">
-            {% block content %}{% endblock content %}
-        </section>
+    <main class="base-main">  
+        <section class="main-section">
+            <section class="base-menu">
+                <nav class="base-menu-items">
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'graphics' project.id %}">Графики</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'summaries' project.id %}">Сводки</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'techpark' project.id %}">Парк техники</a>                    
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'personal' project.id %}">Персонал ВЗис</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'equipment' project.id %}">Оснащение</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'laboratories' project.id %}">Лаборатории</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'ot_pb_oos' project.id %}">ОТ, ПБ, ООС</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'regulations' project.id %}">Предписания</a>                    
+                    <a class="base-menu-item" href="{% url 'project_photo_video_page' project.id %}">Фото, видео</a>
+                    <a class="base-menu-item" href="{% url 'project_other_files_page' 'reserv' project.id %}">Резервная позиция</a>
+                    {% if user.is_superuser %} 
+                    <a class="base-menu-item change-project-menu-item" href="{% url 'project_update_page' project.id %}">Изменить проект</a>
+                    {% endif %}
+                </nav>
+            </section>
+            <section class="base-content">
+                {% block content %}{% endblock content %}
+            </section>
+
+        </section>      
+        
     </main>
     
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
@@ -125,6 +159,8 @@
     {% endif %}
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'projects/scripts/detailScript.js' %}"></script>
+
     {% block footerScripts %}{% endblock footerScripts %}
 </body>
 </html>

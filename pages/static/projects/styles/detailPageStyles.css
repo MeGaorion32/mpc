@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     padding: 2em;
 }
 
 .detail-images-block {
     margin-top: 3em;
-    width: 70%;
+    width: 44.37em;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -17,7 +17,7 @@
 }
 
 .detail-project-img {
-    width: 70%;
+    width: 100%;
     margin-bottom: 1em;
 }
 
@@ -32,4 +32,36 @@
 .project-info-text {
     border: 1px solid gray;
     width: 70%;
+}
+
+.detail-project-name {
+    font-size: 2.25em;
+}
+
+.not-details {
+    display: flex;
+    justify-content: center;
+}
+
+.not-details-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44.37em;
+    height: 19.75em;
+    border-radius: 2em;
+    background: #fff;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.not-details-block-text {
+    font-size: 2.25em;
+    font-weight: 700;
+    width: 70%;
+    text-align: center;
+}
+
+.detail-content {
+    height: 100%;
 }
