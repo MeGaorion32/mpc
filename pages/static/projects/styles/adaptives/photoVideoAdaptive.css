@@ -40,13 +40,7 @@
 
     .all-photo-video {        
         width: 39em;    
-    }    
-
-    * {
-        /* scrollbar-width: 50px; */
-        scrollbar-color: #a9a9a9 #808080;
-    
-    }
+    }     
 
     .photo-video-title {        
         font-size: 1.25em;

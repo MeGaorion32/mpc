@@ -91,7 +91,7 @@ function displayExistingFiles() {
                         id="files-list-image-${file.id}"
                         src="${pdfFile}" 
                         alt="${file.name}" 
-                        onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                        onclick="selectFile(${index}, ${listFile.files.length}, '${extension}', '${fileURL}', '${file.id}')">
                     `);
 
                 } else if (extension == 'mp4' || extension == 'webm') {
@@ -100,7 +100,7 @@ function displayExistingFiles() {
                         id="files-list-image-${file.id}"
                         src="${videoFile}" 
                         alt="${file.name}" 
-                        onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                        onclick="selectFile(${index}, ${listFile.files.length}, '${extension}', '${fileURL}', '${file.id}')">
                     `);
 
                 } else {
@@ -109,7 +109,7 @@ function displayExistingFiles() {
                         id="files-list-image-${file.id}"
                         src="${fileURL}" 
                         alt="${file.name}" 
-                        onclick="selectFile(${index}, ${listFile.files.length}, '${fileURL}', '${file.id}')">
+                        onclick="selectFile(${index}, ${listFile.files.length}, '${extension}', '${fileURL}', '${file.id}')">
                     `);
                 }
                 // $(`#files-list-block-${index + 1}`).append(`

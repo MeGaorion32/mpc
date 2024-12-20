@@ -24,6 +24,11 @@
     .selected-file {
         height: 62%;
     }
+
+    .files-list-image {
+        min-width: 110px;
+        max-width: 110px;       
+    }
   
 }
 
@@ -64,6 +69,11 @@
 
     .create-page {        
         margin: 1em 0;
+    }
+
+    .files-list-image {
+        min-width: 110px;
+        max-width: 110px;       
     }
 
 }
@@ -130,8 +140,10 @@
         right: 0
     }
 
-
-   
+    .files-list-image {
+        min-width: 140px;
+        max-width: 140px;       
+    }   
 }
 
 /* Мобила мелкая */
@@ -194,6 +206,11 @@
 
     .logout-button-block {
         right: 0
+    }
+
+    .files-list-image {
+        min-width: 100px;
+        max-width: 100px;       
     }
 
   
