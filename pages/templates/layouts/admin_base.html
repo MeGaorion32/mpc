@@ -16,6 +16,10 @@
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mainStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'account/styles/adaptives/registerAdaptive.css' %}">
+    <link rel="stylesheet" href="{% static 'projects/styles/adaptives/admin/adminListAdaptive.css' %}">
+
+
 
     {% block headScripts %}{% endblock headScripts %}
     <style>
@@ -66,6 +70,8 @@
                     expand_more
                 </span>
             </div>
+
+            <div class="hamburger" id="hamburger">&#9776;</div>
     
             <div id="logout-button-block" class="logout-button-block" style="display: none;">
                 <p class="login-head">Портал мониторинга хода строительства</p>
@@ -77,9 +83,22 @@
             </div>        
         </header>
 
-        <section class="content-section">
+        <div class="menu-modal" id="menu-modal">
+            <span class="menu-modal-close" id="menu-modal-close">&times;</span> 
+            <div class="menu-modal-content">                                          
+                <ul>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'admin_all_projects_page' %}">Все проекты</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'admin_all_users_page' %}">Все пользователи</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'project_create_page' %}">Добавить проект</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'register' %}">Регистрировать пользователя</a></li>    
+                    <li class="hamburger-base-menu-item"><a class="hamburger-base-menu-url" href="{% url 'update_user' 'admin' user.id %}">Профиль</a></li>                                            
+                </ul>    
+            </div>    
+        </div>
 
-        </section>
+        <!-- <section class="content-section">
+
+        </section> -->
     
         <main class="base-main">        
             <section class="base-menu">
@@ -96,8 +115,8 @@
             </section>
         </main>
         
-        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'projects/scripts/baseScript.js' %}"></script>
+        <!-- <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script> -->
+        <!-- <script src="{% static 'projects/scripts/baseScript.js' %}"></script> -->
     
         {% else %}
         <h2>Вы не администратор. Авторизуйтесь как администратор.</h2>
@@ -111,6 +130,9 @@
         {% endif %}
     
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'projects/scripts/baseScript.js' %}"></script>
+    <script src="{% static 'projects/scripts/detailScript.js' %}"></script>
+
         {% block footerScripts %}{% endblock footerScripts %}
 
     <!-- </section> -->

@@ -111,3 +111,7 @@
     width: 90%;
     height: 90%;
 }
+
+.hamburger, .menu-modal {
+    display: none;
+}

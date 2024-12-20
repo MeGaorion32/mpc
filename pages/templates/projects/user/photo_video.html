@@ -64,6 +64,48 @@
         </div>        
     </div>
 
+
+    <div class="all-photo-video-block">
+        <div class="all-photo-video">
+            {% for video in project_videos %}     
+            <div class="photo-block">
+                <form action="{% url 'project_detail_file_page' %}" method="post" class="photo-video-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ photo.id }}">
+                    <input type="hidden" name="type" value="photo"> 
+                    <input type="hidden" name="url" value="project_photo_video_page"> 
+    
+                    <button type="submit" class="photo-button" style="background: none; border: none; padding: 0;">
+                        <video class="photo-video-img" id="project_video">    
+                            <source src="{{ video.full_file_path }}" type="video/mp4">    
+                        </video>    
+                    </button>
+    
+                </form>     
+            </div>
+            {% endfor %}
+
+            {% for photo in project_photos %}     
+            <div class="photo-block">
+                <form action="{% url 'project_detail_file_page' %}" method="post" class="photo-video-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ photo.id }}">
+                    <input type="hidden" name="type" value="photo"> 
+                    <input type="hidden" name="url" value="project_photo_video_page"> 
+    
+                    <button type="submit" class="photo-button" style="background: none; border: none; padding: 0;">
+                        <img class="photo-video-img" id="project_photo" src="{{ photo.full_file_path }}" alt="Фото проекта"
+                        data-id="{{ photo.id }}" data-type="photo" data-url="projects/user/photo_video.html" data-token="{{ csrf_token }}">
+                    </button>
+    
+                </form>     
+            </div>
+            {% endfor %}
+        </div>        
+    </div>
+
+
+
 </section>
 
 {% endblock content %}

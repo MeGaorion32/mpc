@@ -48,3 +48,11 @@
 .register-field {
     width: 20em !important;
 }
+
+.login-project-block {
+    margin-top: 3em;
+}
+
+.avatar-button {
+    width: 20em;
+}

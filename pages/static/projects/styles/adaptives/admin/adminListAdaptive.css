@@ -1,0 +1,178 @@
+/* Нетбук и ноут */
+@media (max-width: 1280px) and (min-width: 1024px) {
+    .list-head-text {
+        font-size: 1.25em;
+        text-align: center;
+    }
+
+    .project-name {
+        font-size: 1em;
+    }
+
+    .project-block {
+        width: 93%;
+        height: 10em;
+        margin-bottom: 1em;
+    }
+
+    .implemented-projects-block, .completed-projects-block {
+        width: 50%;
+    }
+  
+}
+
+/* Планш */
+@media (max-width: 1023px) and (min-width: 768px) {
+
+    .auth-header {
+        padding: 1em 1.5em;
+      }
+
+    .base-menu {
+        width: 25%;
+    }
+
+    .list-head-text {
+        font-size: 1.125em;
+        text-align: center;
+    }
+
+    .all-projects-page-block {        
+        padding: 3em 0;   
+    }
+
+    .project-name {
+        font-size: 1em;
+    }
+
+    .project-block {
+        width: 85%;
+        height: 8em;
+        margin-bottom: 1em;
+    }
+
+    .implemented-projects-block, .completed-projects-block {
+        width: 50%;
+    }
+
+    .buttons-block {
+        width: 85%;
+    }
+
+}
+
+/* Айфон */
+@media (max-width: 450px) {
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .logo {
+        width: 4.3em;
+        height: 1.5em;
+    }
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .list-head-text {
+        font-size: 1.125em;
+        text-align: center;
+    }
+
+    .all-projects-page-block {     
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 3em;   
+        width: 100%;   
+        padding: 3em 0;   
+    }
+
+    .completed-projects-block, .implemented-projects-block {    
+        width: 90%;
+        margin-bottom: 3em;
+    }   
+
+    .project-name {
+        font-size: 0.875em;
+        text-align: center;
+    }
+
+    .logout-button-block {
+        right: 0
+    }
+
+    .project-block {
+        width: 100%;
+        height: 7em;
+        margin-bottom: 1em;
+    }
+}
+
+/* Мобила мелкая */
+@media (max-width: 350px) {
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .logo {
+        width: 4.3em;
+        height: 1.5em;
+    }
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+
+    }
+
+    .list-head-text {
+        font-size: 1.125em;
+    }
+
+    .all-projects-page-block {     
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 3em;   
+        width: 100%;   
+        padding: 3em 0;   
+    }
+
+    .completed-projects-block, .implemented-projects-block {    
+        width: 90%;
+        margin-bottom: 3em;
+    }
+
+    /* .completed-projects-block {
+        margin-top: 2em;
+    } */
+
+    .project-name {
+        font-size: 0.875em;
+    }
+
+    .logout-button-block {
+        right: 0
+    }
+
+    .project-block {
+        width: 100%;
+        height: 7em;
+        margin-bottom: 1em;
+    }
+}
+

@@ -26,9 +26,31 @@
     .account-text {
         font-size: 1em;
 
-    }  
+    }
 
-  
+    .video-block, .photo-block {
+        width: 300px;
+        height: 173px;
+        border-radius: 19.81px;       
+    }
+
+    .photo-video-block {
+        width: 100%;       
+    }
+
+    .all-photo-video {        
+        width: 39em;    
+    }    
+
+    * {
+        /* scrollbar-width: 50px; */
+        scrollbar-color: #a9a9a9 #808080;
+    
+    }
+
+    .photo-video-title {        
+        font-size: 1.25em;
+    }
 }
 
 /* Планш */
@@ -60,6 +82,24 @@
         font-size: 1em;
     }    
 
+    .video-block, .photo-block {
+        width: 200px;
+        height: 127.14px;
+        border-radius: 14.56px;       
+    }
+
+    .photo-video-block {
+        width: 90%;       
+    }
+
+    .all-photo-video {        
+        width: 26em;    
+    }   
+    
+    .photo-video-title {        
+        font-size: 1.125em;
+    }   
+
 }
 
 /* Айфон */
@@ -90,7 +130,51 @@
     .account-text {
         font-size: 0.875em;
     }
- 
+
+    .base-content {
+        width: 100%;
+    }
+
+    .all-photo-video {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .photo-video-block {
+        display: none;
+    }
+
+    .all-photo-video-block {
+        display: block;
+        width: 100%;
+    }
+
+    .video-block, .photo-block {
+        width: 258px;
+        height: 127.14px;
+        border-radius: 14.56px;       
+    }
+
+    .photo-video-block {
+        width: 90%;       
+    }
+
+    .all-photo-video {   
+        height: 36.75em;     
+        width: 100%;    
+    }   
+    
+    .photo-video-title {        
+        font-size: 1.125em;
+    }   
+
+    .photo-video-img {
+        width: 100%;
+        height: 85%;    
+        object-fit: contain;
+    }
   
 }
 
@@ -122,6 +206,51 @@
     .account-text {
         font-size: 0.875em;
     }  
+
+    .base-content {
+        width: 100%;
+    }
+
+    .all-photo-video {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .photo-video-block {
+        display: none;
+    }
+
+    .all-photo-video-block {
+        display: block;
+        width: 100%;
+    }
+
+    .video-block, .photo-block {
+        width: 258px;
+        height: 127.14px;
+        border-radius: 14.56px;       
+    }
+
+    .photo-video-block {
+        width: 90%;       
+    }
+
+    .all-photo-video {   
+        height: 36.75em;     
+        width: 100%;    
+    }   
+    
+    .photo-video-title {        
+        font-size: 1.125em;
+    }   
+
+    .photo-video-img {
+        width: 100%;
+        height: 85%;    
+        object-fit: contain;
+    }
   
 }
 
