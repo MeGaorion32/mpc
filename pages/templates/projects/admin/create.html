@@ -15,9 +15,9 @@
 {% block content %}
 <main class="create-page">
     {% if updatePage %}
-    <h1>Изменение проекта</h1>
+    <h1 class="create-page-title">Изменение проекта</h1>
     {% else %}
-    <h1>Добавление нового проекта</h1>
+    <h1 class="create-page-title">Добавление нового проекта</h1>
     {% endif %}
     <div class="create-project-block">
         
@@ -25,13 +25,13 @@
             {% csrf_token %}
             <div class="main-data-block">
                 <div class="project-create-name-block">
-                    <label for="project-name-input">Называние</label>
+                    <label for="project-name-input" class="project-crate-label">Называние</label>
                     <input type="text" id="project-name-input" class="project-name-input" name="name" {% if updatePage %}value="{{ project.name }}"{% endif %}>
                 </div>
     
                 <div class="project-owner-block">
-                    <label for="project-user-select">Руководитель</label>
-                    <select name="user" id="project-user-select" class="project-user-select">
+                    <label for="project-user-select" class="project-crate-label">Руководитель</label>
+                    <select name="user" id="project-user-select" class="project-user-select form-select">
                         {% for user in users %}
                         <option value="{{ user.id }}" {% if updatePage and project.user.id == user.id %}selected{% endif %}>{{ user }}</option>
                         {% endfor %}

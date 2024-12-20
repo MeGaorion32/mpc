@@ -1,0 +1,220 @@
+/* Нетбук и ноут */
+@media (max-width: 1280px) and (min-width: 1024px) {
+
+    .logo {
+        width: 8.69em;
+        height: 3em;
+    }
+
+    .first-head-block {
+        width: 25%;
+    }
+
+    .auth-header {        
+        padding: 1em 3em;        
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+    }
+
+    .base-menu {
+      width: 25%;
+    }
+
+    .base-content {
+        width: 75%;
+    }
+
+    .user-block {
+        width: 93%;
+    }
+  
+}
+
+/* Планш */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .logo {
+        width: 8.69em;
+        height: 3em;
+    }
+
+    .first-head-block {
+        width: 25%;
+    }
+
+    .auth-header {        
+        padding: 1em 2em;        
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+    }
+
+    .base-menu {
+      width: 25%;
+    }
+
+    .base-content {
+        width: 75%;
+    }   
+
+    .user-block {
+        width: 93%;
+    }
+
+    .user-data-block {
+        display: flex;
+        align-items: center;
+        width: 15%;
+    }  
+      
+}
+
+/* Айфон */
+@media (max-width: 450px) {
+    .logo {
+        width: 4em;
+        height: 1.5em;
+    }
+
+    .first-head-block {
+        width: 25%;
+    }
+
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+    }   
+
+    .user-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* flex-wrap: wrap;  */
+        width: 100%;
+    }    
+
+    .user-data-block {
+        margin-bottom: 1em;
+    }
+
+    .menu-modal {
+        height: 16em;
+    }
+
+}
+
+/* Мобила мелкая */
+@media (max-width: 350px) {
+    
+    .logo {
+        width: 4em;
+        height: 1.5em;
+    }
+
+    .first-head-block {
+        width: 25%;
+    }
+
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .head-logo-block {
+        width: 8.7em;
+        height: 3em;
+    }    
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 12em;
+    }
+
+    .account-text {
+        font-size: 1em;
+    }
+
+    .base-menu {
+      width: 30%;
+    }
+
+    .base-content {
+        width: 70%;
+    }   
+
+    .user-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* flex-wrap: wrap;  */
+        width: 100%;
+    }    
+
+    .user-data-block {
+        margin-bottom: 1em;
+    }
+    
+    /* .user-data-block {
+    flex: 1 1 calc(33.33% - 10px); 
+    margin: 5px; 
+    box-sizing: border-box; 
+    }
+    
+    .user-actions-block {
+    flex: 1 1 100%; 
+    margin: 5px 0; 
+    box-sizing: border-box; 
+    } */
+  
+}
+

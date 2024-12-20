@@ -1,0 +1,201 @@
+/* Нетбук и ноут */
+@media (max-width: 1280px) and (min-width: 1024px) {
+    .list-head-text {
+        font-size: 1.25em;
+    }
+
+    .project-name {
+        font-size: 1em;
+    }
+
+    .project-block {
+        width: 100%;
+        height: 10em;
+    }
+
+    .create-page {
+        width: 94%;
+    }   
+
+    .project-create-name-block, .project-owner-block, .project-create-completed-block {       
+        width: 100%;
+    }
+
+    .selected-file {
+        height: 62%;
+    }
+  
+}
+
+/* Планш */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .list-head-text {
+        font-size: 1.125em;
+    }
+
+    .all-projects-page-block {        
+        padding: 3em 0;   
+    }
+
+    .project-name {
+        font-size: 1em;
+    }
+
+    .project-block {
+        width: 100%;
+        height: 8em;
+    }
+
+    .create-page {
+        width: 94%;
+    }   
+
+    .project-create-name-block, .project-owner-block, .project-create-completed-block {       
+        width: 100%;
+    }
+
+    .selected-file {
+        height: 52%;
+    }
+
+    .main-data-block {
+        width: 58%;
+    }
+
+    .create-page {        
+        margin: 1em 0;
+    }
+
+}
+
+/* Айфон */
+@media (max-width: 450px) {
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .logo {
+        width: 4.3em;
+        height: 1.5em;
+    }
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+
+    }
+
+    .main-data-block, .project-name-input, .info-data-block, .selected-file-block, .files-block {
+        width: 100%;
+    }
+
+    .selected-file-block {
+        height: 19em;
+        margin: 1em 0;
+    } 
+   
+
+    .project-create-name-block, .project-owner-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .all-files-block {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .files-button-block {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .file-input-button {
+        width: 100%;
+    }
+
+    .logout-button-block {
+        right: 0
+    }
+
+
+   
+}
+
+/* Мобила мелкая */
+@media (max-width: 350px) {
+    .auth-header {        
+        padding: 1em;        
+    }
+
+    .logo {
+        width: 4.3em;
+        height: 1.5em;
+    }
+
+    .logo-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .account {
+        width: 9em;
+    }
+
+    .account-text {
+        font-size: 0.875em;
+
+    }
+
+    .main-data-block, .project-name-input, .info-data-block, .selected-file-block, .files-block {
+        width: 100%;
+    }
+
+    .selected-file-block {
+        height: 19em;
+        margin: 1em 0;
+    } 
+   
+
+    .project-create-name-block, .project-owner-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .all-files-block {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .files-button-block {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .file-input-button {
+        width: 100%;
+    }
+
+    .logout-button-block {
+        right: 0
+    }
+
+  
+}
+

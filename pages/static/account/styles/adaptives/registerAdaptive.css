@@ -238,7 +238,7 @@
     }
 
     .user-avatar-text, .user-save-text {
-        font-size: 0.7em;
+        font-size: 1em;
     }
 
     .change-user {
@@ -345,6 +345,11 @@
         font-family: 'Open Sans', sans-serif;
     } 
 
+    .register-field {
+        width: 100% !important;
+    }
+
+
 }
 
 /* Мобила мелкая */
@@ -407,7 +412,7 @@
     }
 
     .user-avatar-text, .user-save-text {
-        font-size: 0.7em;
+        font-size: 1em;
     }
 
     .change-user {
@@ -447,9 +452,7 @@
         flex-direction: column;
         height: 8em;
         margin-bottom: 0.5em;
-    }
-
-   
+    }   
 
     .user-edit-form {
         display: flex;
@@ -515,6 +518,10 @@
         color: #000;
         font-family: 'Open Sans', sans-serif;
     } 
+
+    .register-field {
+        width: 100% !important;
+    }
 
   
 }

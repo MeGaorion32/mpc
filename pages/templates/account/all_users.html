@@ -19,15 +19,15 @@
     {% for user in users %}
     <a class="user-update-link" href="{% url 'update_user' 'user' user.id %}">
         <div class="user-block" id="user-block">
-            <div class="user-email-block">
-                <p class="user-email">{{ user.email }}</p>
+            <div class="user-email-block user-data-block">
+                <p class="user-email user-text">{{ user.email }}</p>
             </div>
-            <div class="user-name-block">
-                <p class="user-name">{{ user.name }} {{ user.surname }} {{ user.patronymic }}</p>
+            <div class="user-name-block user-data-block">
+                <p class="user-name user-text">{{ user.name }} {{ user.surname }} {{ user.patronymic }}</p>
             </div>            
-            <div class="user-role-block">
+            <div class="user-role-block user-data-block">
                 {% for role in roles %}
-                <p class="user-role">{% if user.role == role.name %}{{ role.label }}{% endif %}</p>
+                <p class="user-role user-text">{% if user.role == role.name %}{{ role.label }}{% endif %}</p>
                 {% endfor %}
             </div>
     

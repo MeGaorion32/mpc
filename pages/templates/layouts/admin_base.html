@@ -18,6 +18,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/mainStyles.css' %}">
     <link rel="stylesheet" href="{% static 'account/styles/adaptives/registerAdaptive.css' %}">
     <link rel="stylesheet" href="{% static 'projects/styles/adaptives/admin/adminListAdaptive.css' %}">
+    <link rel="stylesheet" href="{% static 'account/styles/adaptives/allUsersAdaptive.css' %}">
+    <link rel="stylesheet" href="{% static 'projects/styles/adaptives/admin/createProjectAdaptive.css' %}">
+
+
 
 
 
@@ -58,7 +62,7 @@
 
         <header class="auth-header">
             <div class="logo">
-                <img class="logo-img" src="{% static 'images/logo.png' %}" alt="">
+                <a href="{% url 'admin_all_projects_page' %}" class="head-link"><img class="logo-img" src="{% static 'images/logo.png' %}" alt=""></a>
             </div>
             <div class="account">
                 <!-- <img class="account-img" src="{% static 'images/user_avatar.png' %}" alt=""> -->            
