@@ -165,6 +165,7 @@ function selectFile(fieldIndex, fileIndex, extension=null, fileURL=null, fileId=
     // Создаём новый элемент img с переданным URL и добавляем его в блок 
     if(extension == 'pdf') {
         selectedImage = ` <iframe src="${viewerUrl}#${fileURL}" style="width:70%; height:90%;" frameborder="0"></iframe>`;
+        // selectedImage =  `<embed src="https://docs.google.com/gview?url=${fileURL}&embedded=true" style="width: 70%; height: 90%;" frameborder="0">`
     } else if (extension == 'mp4' || extension == 'webm') {
         selectedImage = `
         <video class="photo-video-item" style="width:70%; height:90%;" controls>            
