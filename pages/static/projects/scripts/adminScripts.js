@@ -172,7 +172,7 @@ function selectFile(fieldIndex, fileIndex, extension=null, fileURL=null, fileId=
             Your browser does not support the video tag.
         </video>`
     } else {
-        selectedImage = `<img class="selected-image" src="${fileURL}" alt="Selected file" class="selected-image">`;
+        selectedImage = `<img class="selected-image" src="${fileURL}" alt="Selected file" class="selected-image" style="width:70%; height:90%;">`;
     }    
      
     $('#selected-file').append(selectedImage);
