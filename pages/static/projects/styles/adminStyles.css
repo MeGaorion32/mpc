@@ -24,6 +24,7 @@
     margin-right: 3em;
     overflow-x: auto;
     position: relative;
+    background-color: #fff;
 }
 
 
@@ -43,6 +44,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .selected-file {
@@ -52,6 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
 }
 
 .remove-file-button {

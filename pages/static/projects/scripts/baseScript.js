@@ -8,5 +8,10 @@ toggleDropdown.addEventListener('click', function() {
     } else {        
         logoutBlock.style.display = 'none';        
     }        
-});        
+});   
+
+ // Скрыть прелодер после полной загрузки страницы
+ window.addEventListener('load', function() {
+    document.getElementById('preloader').style.display = 'none';
+});
        

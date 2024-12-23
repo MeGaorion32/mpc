@@ -89,8 +89,9 @@ $(document).ready(function() {
 
 
     $('#remove-file-button').on('click', function() {
-        const { fieldIndex, fileIndex, fileId } = selectedFileInfo;
-        console.log('fileId', fileId);        
+        const { fieldIndex, fileIndex, fileId, extension } = selectedFileInfo;
+        console.log('fileId', fileId); 
+        console.log('extension', extension);        
 
         if (fileId != null) {
             $.ajax({
@@ -122,7 +123,7 @@ $(document).ready(function() {
     
             // Обновляем интерфейс
             $('#selected-file').empty(); // Очищаем блок выбранного файла
-            selectedFileInfo = { fieldIndex: null, fileIndex: null }; // Сбрасываем информацию о выбранном файле
+            selectedFileInfo = { fieldIndex: null, fileIndex: null, fileId: null, extension: null }; // Сбрасываем информацию о выбранном файле
     
             // Обновляем список файлов, если нужно
             $(`#files-list-block-${fieldIndex + 1}`).empty(); // Очищаем блок с изображениями
@@ -132,12 +133,11 @@ $(document).ready(function() {
                     <img id="files-list-image-${fieldIndex + 1}-${i + 1}" 
                     class="files-list-image" src="${fileURL}" 
                     alt="${file.name}" 
-                    onclick="selectFile(${fieldIndex}, ${i}, ${extension}, '${fileURL}')">
+                    onclick="selectFile(${fieldIndex}, ${i}, '${extension}', '${fileURL}')">
                 `);
             });
         }
     });
-    
 
 })
 
@@ -145,11 +145,13 @@ let selectedFileInfo = {
     fieldIndex: null,
     fileIndex: null,
     fileId: null,
+    extension: null
 };
 
 
 function selectFile(fieldIndex, fileIndex, extension=null, fileURL=null, fileId=null) {
-    console.log('Select file', fileURL);
+    console.log('fieldIndex', fieldIndex);
+    console.log('fileIndex', fileIndex);
     console.log('fileId', fileId);
     console.log('extension', extension);
     console.log('fileURL', fileURL);
@@ -179,6 +181,7 @@ function selectFile(fieldIndex, fileIndex, extension=null, fileURL=null, fileId=
     selectedFileInfo.fieldIndex = fieldIndex;
     selectedFileInfo.fileIndex = fileIndex;
     selectedFileInfo.fileId = fileId;
+    selectedFileInfo.extension = extension;
 
 }
 

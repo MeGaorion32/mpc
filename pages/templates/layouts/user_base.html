@@ -44,7 +44,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(244, 244, 244, 0.9); /* Полупрозрачный светлый цвет */
+            background-color: rgba(244, 244, 244, 0.95); /* Полупрозрачный светлый цвет */
             z-index: 1; /* Установите ниже по ее положению */
         }
 
@@ -85,6 +85,9 @@
         </div>     
     </header>
     <main class="user-base-main">
+        <div id="preloader">
+            <div class="loader"></div>
+        </div>
         {% block content %}{% endblock content %}
     </main>
     

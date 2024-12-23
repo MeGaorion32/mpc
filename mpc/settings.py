@@ -26,9 +26,11 @@ SECRET_KEY = 'django-insecure-r6&75#+jr)6m!6k^5*(*wyt3wob@%z7!9f33s3-5=6l9ekyef_
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['mpc.megaorion.ru']
 # ALLOWED_HOSTS = ['mrisma8g.beget.tech']
 
 BASE_URL = 'http://localhost:8000'
+# BASE_URL = 'https://mpc.megaorion.ru'
 # BASE_URL = 'http://mrisma8g.beget.tech'
 
 
@@ -105,6 +107,15 @@ DATABASES = {
     #     'NAME': 'mrisma8g_mpc', 
     #     'USER':'mrisma8g_mpc', 
     #     'PASSWORD':'mpcPass1234', 
+    #     'HOST':'localhost', 
+    #     'PORT':'3306' 
+    # } 
+
+    # 'default': { 
+    #     'ENGINE': 'django.db.backends.mysql', 
+    #     'NAME': 'evgeny32_mpc', 
+    #     'USER':'evgeny32_mpc', 
+    #     'PASSWORD':'mpcPass123', 
     #     'HOST':'localhost', 
     #     'PORT':'3306' 
     # } 

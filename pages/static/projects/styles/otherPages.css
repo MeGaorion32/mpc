@@ -25,6 +25,9 @@
 .other-file-block {
     width: 100%;
     height: 43.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .file-name-url {

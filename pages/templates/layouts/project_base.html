@@ -43,19 +43,22 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(244, 244, 244, 0.9); /* Полупрозрачный светлый цвет */
+            background-color: rgba(244, 244, 244, 0.95); /* Полупрозрачный светлый цвет */
             z-index: 1; /* Установите ниже по ее положению */
         }
 
         .base-main > * {
             position: relative; /* Элементы внутри будут отображаться выше псевдо-элемента */
             z-index: 2; /* Установите выше по ее положению */
-            }
+        }       
+
     </style>
 </head>
 <body>
    
-    {% if user.is_active %}    
+    {% if user.is_active %}     
+   
+
     <header class="auth-header">
         <div class="first-head-block">
             <div class="head-logo-block">
@@ -123,6 +126,9 @@
 
     </header>
     <main class="base-main">  
+        <div id="preloader">
+            <div class="loader"></div>
+        </div>
         <section class="main-section">
             <section class="base-menu">
                 <nav class="base-menu-items">
@@ -156,11 +162,11 @@
     {% else %}
     <h2>Авторизуйтесь чтобы смотреть проекты</h2>
     <a href="{% url 'login' %}">Страница авторизации</a>
-    {% endif %}
+    {% endif %}   
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'projects/scripts/baseScript.js' %}"></script>
-    <script src="{% static 'projects/scripts/detailScript.js' %}"></script>
+    <script src="{% static 'projects/scripts/detailScript.js' %}"></script>    
 
     {% block footerScripts %}{% endblock footerScripts %}
 </body>
